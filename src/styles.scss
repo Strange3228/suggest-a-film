@@ -1,1 +1,110 @@
-/* You can add global styles to this file, and also import other style files */
+@import "variables";
+html, body, *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  background: $grey900;
+}
+body{
+  font-family: $font_poppins;
+  min-height: 100vh;
+  background-image: url("assets/icons/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+}
+.container{
+  max-width: 1440px;
+  padding: 0 120px;
+  margin: auto;
+}
+h1{
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 80px;
+  letter-spacing: -2%;
+}
+h2{
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 56px;
+  letter-spacing: -2%;
+}
+h3{
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: -2%;
+}
+h4{
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -1.5%;
+}
+h5{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -1.5%;
+}
+h6{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -1.5%;
+}
+p.large{
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+}
+p.regular{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+p.small{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+p.extra-small{
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+}
+p.overline-regular{
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  text-transform: uppercase;
+  //letter-spacing: 4%;
+}
+p.overline-small{
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 16px;
+  text-transform: uppercase;
+  //letter-spacing: 4%;
+}
+a.regular{
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  //letter-spacing: 2%;
+}
+a.small{
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  //letter-spacing: 2%;
+}
+a.extra-small{
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  //letter-spacing: 2%;
+}
