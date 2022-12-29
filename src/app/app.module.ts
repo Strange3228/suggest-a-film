@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarGuestComponent } from './components/navbar-guest/navbar-guest.component';
 import { NavbarAdminComponent } from './components/navbar-admin/navbar-admin.component';
+import {SharedModule} from "./shared/shared.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { NavbarAdminComponent } from './components/navbar-admin/navbar-admin.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

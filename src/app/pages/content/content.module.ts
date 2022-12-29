@@ -1,12 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MoviesComponent } from './components/movies/movies.component';
+import { ContentRoutingModule } from "./content-routing.module";
+import { SharedModule } from "../../shared/shared.module";
+import { ContentComponent } from "./content.component";
+import { TvShowsComponent } from './components/tv-shows/tv-shows.component';
+import { DetailsComponent } from './components/details/details.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MoviesComponent,
+    ContentComponent,
+    TvShowsComponent,
+    DetailsComponent
+  ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    ContentRoutingModule,
+    SharedModule,
+  ],
+  bootstrap: [ContentComponent]
 })
 export class ContentModule { }

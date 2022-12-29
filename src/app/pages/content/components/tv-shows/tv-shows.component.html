@@ -1,0 +1,17 @@
+<div class="total_items">
+  <p class="regular">Total {{totalShows}}</p>
+</div>
+<div class="list_items_wrapper grid-4-col">
+  <div class="list_item" *ngFor="let tvshow of tvShows | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalShows}">
+    <app-movie-card
+      routerLink="/content/tv/details/{{tvshow.id}}"
+      [title]="tvshow.name"
+      [rating]="tvshow.vote_average"
+      [coverImageLink]="tvshow.poster_path"
+    >
+    </app-movie-card>
+  </div>
+  <pagination-controls
+    (pageChange)="goToPage($event)"
+  ></pagination-controls>
+</div>

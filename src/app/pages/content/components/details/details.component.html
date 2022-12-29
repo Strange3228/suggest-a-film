@@ -1,0 +1,84 @@
+<div class="details_wrapper">
+  <div class="container">
+    <div class="top_section">
+      <img src="{{ApiBaseImagePath + details.backdrop_path}}" alt="backdrop">
+      <div class="title_block">
+        <p class="breadcrumbs extra-small">breadcrumbs</p>
+        <h3>{{details.title ? details.title : details.name}}</h3>
+      </div>
+    </div>
+    <div class="main_section">
+      <div class="left_side">
+        <img src="{{ApiBaseImagePath + details.poster_path}}" alt="poster">
+      </div>
+      <div class="right_side">
+        <h4>{{details.tagline}}</h4>
+        <p class="large description">{{details.overview}}</p>
+        <div class="rating">
+          <img src="assets/icons/star.svg" alt="star icon">
+          <p class="regular">{{details.vote_average}}</p>
+        </div>
+
+        <div class="info_blocks" *ngIf="mediaType == 'movie'">
+          <div class="info_block">
+            <p class="regular">Type</p>
+            <p class="large">Movie</p>
+          </div>
+          <div class="info_block">
+            <p class="regular">Release Date:</p>
+            <p class="large">{{details.release_date}}</p>
+          </div>
+          <div class="info_block">
+            <p class="regular">Run Time</p>
+            <p class="large">{{details.runtime}} min</p>
+          </div>
+          <div class="info_block">
+            <p class="regular">Genres</p>
+            <p class="large">
+              <span *ngFor="let genre of details.genres">{{genre.name}}, </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="info_blocks" *ngIf="mediaType == 'tv'">
+          <div class="info_blocks_tv">
+            <div class="info_block">
+              <p class="regular">Type</p>
+              <p class="large">Tv Show</p>
+            </div>
+            <div class="info_block">
+              <p class="regular">Status</p>
+              <p class="large">{{details.status}}</p>
+            </div>
+            <div class="info_block">
+              <p class="regular">First air date</p>
+              <p class="large">{{details.first_air_date}}</p>
+            </div>
+            <div class="info_block">
+              <p class="regular">Last air date</p>
+              <p class="large">{{details.last_air_date}}</p>
+            </div>
+            <div class="info_block">
+              <p class="regular">No. of Seasons</p>
+              <p class="large">{{details.number_of_seasons}}</p>
+            </div>
+            <div class="info_block">
+              <p class="regular">No. of episodes</p>
+              <p class="large">{{details.number_of_episodes}}</p>
+            </div>
+            <div class="info_block">
+              <p class="regular">Episode run time</p>
+              <p class="large">{{details.episode_run_time[0]}} min</p>
+            </div>
+          </div>
+          <div class="info_block">
+            <p class="regular">Genres</p>
+            <p class="large">
+              <span *ngFor="let genre of details.genres">{{genre.name}}, </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

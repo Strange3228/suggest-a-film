@@ -4,8 +4,11 @@ html, body, *{
   padding: 0;
   box-sizing: border-box;
 }
+html, body { height: 100%; }
+body, input, textarea, select { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 html{
   background: $grey900;
+  color: $white;
 }
 body{
   font-family: $font_poppins;
@@ -13,7 +16,7 @@ body{
   background-image: url("assets/icons/background.png");
   background-size: cover;
   background-position: center;
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
 }
 .container{
   max-width: 1440px;
@@ -90,6 +93,14 @@ p.overline-small{
   text-transform: uppercase;
   //letter-spacing: 4%;
 }
+.caption{
+  font-size: 14px;
+  line-height: 16px;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
 a.regular{
   font-size: 16px;
   font-weight: 600;
@@ -107,4 +118,34 @@ a.extra-small{
   font-weight: 600;
   line-height: 16px;
   //letter-spacing: 2%;
+}
+
+.grid-4-col{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 24px;
+  grid-row-gap: 20px;
+}
+
+.input_group{
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  background: $black10;
+  border: 1px solid $grey700;
+  border-radius: 12px;
+  min-width: 344px;
+  img.input_prefix{
+    margin-right: 16px;
+  }
+  input{
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: $white;
+    &::placeholder{
+      color: $grey600
+    }
+  }
 }
