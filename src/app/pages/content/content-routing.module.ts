@@ -4,6 +4,7 @@ import { MoviesComponent } from "./components/movies/movies.component";
 import { ContentComponent } from "./content.component";
 import {TvShowsComponent} from "./components/tv-shows/tv-shows.component";
 import {DetailsComponent} from "./components/details/details.component";
+import {SuggestMeComponent} from "./components/suggest-me/suggest-me.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,16 @@ const routes: Routes = [
         component: TvShowsComponent
       }
     ]
+  },
+  {
+    path: 'suggest-me',
+    title: 'Suggest Me',
+    component: SuggestMeComponent
+  },
+  {
+    path: 'suggest-me/:media_type/:search_query/:page',
+    title: 'Suggest Me',
+    component: SuggestMeComponent
   },
   {
     path: 'movie/details/:id',

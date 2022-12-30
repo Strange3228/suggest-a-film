@@ -6,6 +6,8 @@ import { SharedModule } from "../../shared/shared.module";
 import { ContentComponent } from "./content.component";
 import { TvShowsComponent } from './components/tv-shows/tv-shows.component';
 import { DetailsComponent } from './components/details/details.component';
+import { SuggestMeComponent } from './components/suggest-me/suggest-me.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -14,13 +16,15 @@ import { DetailsComponent } from './components/details/details.component';
     MoviesComponent,
     ContentComponent,
     TvShowsComponent,
-    DetailsComponent
+    DetailsComponent,
+    SuggestMeComponent
   ],
-  imports: [
-    CommonModule,
-    ContentRoutingModule,
-    SharedModule,
-  ],
+    imports: [
+        CommonModule,
+        ContentRoutingModule,
+        SharedModule,
+        ReactiveFormsModule,
+    ],
   bootstrap: [ContentComponent]
 })
 export class ContentModule { }

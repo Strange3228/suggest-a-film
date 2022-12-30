@@ -1,0 +1,58 @@
+<div class="content_wrapp">
+  <div class="container">
+    <h1>Suggest me</h1>
+    <p class="regular">I will really appreciate it if you take time to suggest me something good to watch.</p>
+    <form [formGroup]="searchForm" class="search_form">
+      <div class="input_group">
+        <img class="input_prefix" src="assets/icons/search.svg" alt="search icon">
+        <input #searchInput formControlName="search_query" class="caption" type="text" placeholder="Search Movies or TV Shows">
+      </div>
+      <button (click)="submitSearchForm()" class="regular-text">Search</button>
+    </form>
+
+    <div class="categories_wrapper" *ngIf="totalItems > 0">
+      <div class="categories">
+        <div class="categories_item {{media_type == 'movie' ? 'active' : ''}}">
+          <p class="regular" (click)="changeCategory('movie')">Movies</p>
+        </div>
+        <div class="categories_item {{media_type == 'tv' ? 'active' : ''}}">
+          <p class="regular" (click)="changeCategory('tv')">Tv Shows</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="list_items_wrapper grid-4-col" *ngIf="totalItems > 0 && !isLoading">
+      <div
+        class="list_item"
+        *ngFor="let item of searchResult | paginate : {itemsPerPage: 20, currentPage: page, totalItems: totalItems}"
+      >
+        <app-movie-card
+          routerLink="/content/{{media_type}}/details/{{item.id}}"
+          [title]="item.title ? item.title : item.name"
+          [rating]="item.vote_average"
+          [coverImageLink]="item.poster_path"
+          [allowSuggestions]="true"
+        >
+        </app-movie-card>
+      </div>
+    </div>
+
+    <app-results-placeholder *ngIf="isLoading"></app-results-placeholder>
+
+    <pagination-controls
+      *ngIf="totalItems > 0"
+      (pageChange)="goToPage($event)"
+      [autoHide]="true"
+      [responsive]="true"
+      previousLabel="Prev"
+      nextLabel="Next"
+    ></pagination-controls>
+
+    <div class="search_result_is_empty" *ngIf="totalItems == 0 && searchInput.value != ''">
+      <h2>Sorry, No results found</h2>
+      <p class="large">There are no movies or TV shows matching your search terms. You can suggest me manually</p>
+      <button class="small-text">Suggest Manually</button>
+    </div>
+
+  </div>
+</div>

@@ -13,6 +13,8 @@ export class MovieCardComponent implements OnInit {
   @Input() title: string | undefined
   @Input() rating: string | undefined
 
+  @Input() allowSuggestions: boolean = false
+
   constructor() { }
 
   ngOnInit(): void {

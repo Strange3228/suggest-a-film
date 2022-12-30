@@ -1,17 +1,22 @@
 <div class="total_items">
   <p class="regular">Total {{totalShows}}</p>
 </div>
-<div class="list_items_wrapper grid-4-col">
-  <div class="list_item" *ngFor="let tvshow of tvShows | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalShows}">
+<app-results-placeholder *ngIf="isLoading"></app-results-placeholder>
+<div class="list_items_wrapper grid-4-col" *ngIf="!isLoading">
+  <div class="list_item" *ngFor="let tvShow of tvShows | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalShows}">
     <app-movie-card
-      routerLink="/content/tv/details/{{tvshow.id}}"
-      [title]="tvshow.name"
-      [rating]="tvshow.vote_average"
-      [coverImageLink]="tvshow.poster_path"
+      routerLink="/content/tv/details/{{tvShow.id}}"
+      [title]="tvShow.name"
+      [rating]="tvShow.vote_average"
+      [coverImageLink]="tvShow.poster_path"
     >
     </app-movie-card>
   </div>
-  <pagination-controls
-    (pageChange)="goToPage($event)"
-  ></pagination-controls>
 </div>
+<pagination-controls
+  (pageChange)="goToPage($event)"
+  [autoHide]="true"
+  [responsive]="true"
+  previousLabel="Prev"
+  nextLabel="Next"
+></pagination-controls>

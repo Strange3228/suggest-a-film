@@ -1,12 +1,25 @@
 <div class="card">
   <div class="poster">
-    <img src="{{ApiBaseImagePath + coverImageLink}}" alt="poster">
+    <img class="poster_img" *ngIf="coverImageLink; else imagePlaceholder" src="{{ApiBaseImagePath + coverImageLink}}" alt="poster">
+    <ng-template #imagePlaceholder>
+      <div class="poster_img"></div>
+    </ng-template>
   </div>
   <div class="rating">
-    <img src="assets/icons/star.svg" alt="star">
+    <mat-icon class="svg_warning" svgIcon="custom_star"></mat-icon>
     <p>{{rating}}</p>
   </div>
   <div class="description">
     <a class="regular">{{title}}</a>
+    <div *ngIf="allowSuggestions" class="card_suggestion">
+      <div class="suggest">
+        <mat-icon class="svg_primary" svgIcon="custom_like"></mat-icon>
+        <p class="regular">Suggest this</p>
+      </div>
+      <!--<div class="already_suggested">
+        <mat-icon class="svg_success" svgIcon="custom_video-tick"></mat-icon>
+        <p class="regular">Already watched</p>
+      </div>-->
+    </div>
   </div>
 </div>

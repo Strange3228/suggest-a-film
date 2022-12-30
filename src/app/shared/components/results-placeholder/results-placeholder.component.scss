@@ -2,57 +2,65 @@
 
 .card{
   position: relative;
-  background: rgba(32, 40, 62, 0.8);
-  backdrop-filter: blur(6px);
+  background: $grey900;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   row-gap: 16px;
   padding: 8px 8px 16px;
   height: 100%;
-  cursor: pointer;
-  .poster .poster_img{
+  .poster{
     border-radius: 8px;
     width: 100%;
     object-fit: cover;
     object-position: center;
-    height: 400px;
     background: $grey800;
+    height: 400px;
   }
   .description{
     padding: 8px;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    .title{
+      background: $grey800;
+      width: 150px;
+      max-width: 100%;
+      border-radius: 8px;
+      height: 16px;
+    }
   }
   .rating{
     position: absolute;
-    color: $warning;
+    color: transparent;
     display: flex;
     align-items: center;
     padding: 8px;
-    background: $black65;
+    background: $black20;
     backdrop-filter: blur(8px);
     border-radius: 8px;
     top: 18px;
     left: 16px;
     mat-icon{
       margin-right: 4px;
+      opacity: 0;
     }
   }
-  .card_suggestion div{
+  .card_suggestion{
     display: flex;
-    align-items: center;
-    mat-icon{
-      width: 24px;
+    .icon{
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: $grey800;
       margin-right: 8px;
     }
-    &.suggest{
-      color: $primary400;
-    }
-    &.already_suggested{
-      color: $success400;
+    .suggestion_text{
+      background: $grey800;
+      width: 150px;
+      max-width: 100%;
+      border-radius: 8px;
+      height: 16px;
     }
   }
 }
-

@@ -4,17 +4,16 @@ html, body, *{
   padding: 0;
   box-sizing: border-box;
 }
-html, body { height: 100%; }
-body, input, textarea, select { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body, input, textarea, select, button { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 html{
   background: $grey900;
-  color: $white;
+  color: $white100;
 }
 body{
   font-family: $font_poppins;
   min-height: 100vh;
   background-image: url("assets/icons/background.png");
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -64,12 +63,12 @@ p.large{
   font-weight: 400;
   line-height: 32px;
 }
-p.regular{
+p.regular, .regular-text{
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
 }
-p.small{
+p.small, .small-text{
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
@@ -143,9 +142,58 @@ a.extra-small{
     border: none;
     background: transparent;
     outline: none;
-    color: $white;
+    color: $white100;
     &::placeholder{
       color: $grey600
+    }
+  }
+}
+
+.svg_primary{
+  path{
+    stroke: $primary400;
+  }
+}
+.svg_success{
+  path{
+    stroke: $success400;
+  }
+}
+.svg_warning{
+  path{
+    stroke: $warning;
+  }
+}
+
+button{
+  background: $primary400;
+  transition: all 0.3s ease;
+  border: 2px solid $primary400;
+  cursor: pointer;
+  color: $white100;
+  &:hover{
+    background: $primary500;
+    border: 2px solid $primary500;
+  }
+}
+
+pagination-controls{
+  margin: auto;
+  .ngx-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+    .current {
+      background: $primary500;
+      border-radius: 12px;
+    }
+    a{
+      color: $white100;
+      transition: all 0.2s ease;
+    }
+    a:hover, .ngx-pagination button:hover {
+      background: $primary400;
+      border-radius: 12px;
     }
   }
 }

@@ -1,20 +1,25 @@
 <div class="total_items">
   <p class="regular">Total {{totalMovies | number}}</p>
 </div>
-<div class="list_items_wrapper grid-4-col">
+<app-results-placeholder *ngIf="isLoading"></app-results-placeholder>
+<div class="list_items_wrapper grid-4-col" *ngIf="!isLoading">
   <div
     class="list_item"
     *ngFor="let movie of movies | paginate : {itemsPerPage: 20, currentPage: page, totalItems: totalMovies}"
   >
     <app-movie-card
       routerLink="/content/movie/details/{{movie.id}}"
-      [title]="movie.original_title"
+      [title]="movie.title"
       [rating]="movie.vote_average"
       [coverImageLink]="movie.poster_path"
     >
     </app-movie-card>
   </div>
-  <pagination-controls
-    (pageChange)="goToPage($event)"
-  ></pagination-controls>
 </div>
+<pagination-controls
+  (pageChange)="goToPage($event)"
+  [autoHide]="true"
+  [responsive]="true"
+  previousLabel="Prev"
+  nextLabel="Next"
+></pagination-controls>

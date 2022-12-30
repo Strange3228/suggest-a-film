@@ -3,6 +3,7 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Subject, takeUntil} from "rxjs";
 import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
 import {environment} from "../../../../../environments/environment";
+import {itemFromDbInterface} from "../../../../shared/interfaces/api.interface";
 
 @Component({
   selector: 'app-details',
@@ -13,7 +14,7 @@ export class DetailsComponent implements OnInit {
 
   streamIsActive$: Subject<boolean> = new Subject<boolean>()
   ApiBaseImagePath: string = environment.ApiImageOriginalBase
-  details: any
+  details: itemFromDbInterface
 
   mediaType: 'movie' | 'tv'
 
