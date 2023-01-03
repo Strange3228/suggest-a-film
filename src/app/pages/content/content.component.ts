@@ -19,7 +19,7 @@ export class ContentComponent implements OnInit, OnDestroy{
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) {
     router.events.pipe(takeUntil(this.isDestroyed$)).subscribe((val) => {
       if(val instanceof NavigationEnd){

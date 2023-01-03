@@ -12,14 +12,16 @@
   <div class="description">
     <a class="regular">{{title}}</a>
     <div *ngIf="allowSuggestions" class="card_suggestion">
-      <div class="suggest">
+      <div class="suggest" *ngIf="!alreadyWatched; else alreadyInList" (click)="suggestFilm()">
         <mat-icon class="svg_primary" svgIcon="custom_like"></mat-icon>
         <p class="regular">Suggest this</p>
       </div>
-      <!--<div class="already_suggested">
-        <mat-icon class="svg_success" svgIcon="custom_video-tick"></mat-icon>
-        <p class="regular">Already watched</p>
-      </div>-->
+      <ng-template #alreadyInList>
+        <div class="already_suggested">
+          <mat-icon class="svg_success" svgIcon="custom_video-tick"></mat-icon>
+          <p class="regular">Already watched</p>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

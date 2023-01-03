@@ -27,11 +27,13 @@
         *ngFor="let item of searchResult | paginate : {itemsPerPage: 20, currentPage: page, totalItems: totalItems}"
       >
         <app-movie-card
-          routerLink="/content/{{media_type}}/details/{{item.id}}"
+
           [title]="item.title ? item.title : item.name"
           [rating]="item.vote_average"
           [coverImageLink]="item.poster_path"
           [allowSuggestions]="true"
+          [alreadyWatched]="watchedIds.includes(item.id)"
+          [media_id]="item.id"
         >
         </app-movie-card>
       </div>

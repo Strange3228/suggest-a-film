@@ -4,6 +4,7 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {first, Subject, takeUntil} from "rxjs";
 import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
 import {itemFromDbInterface} from "../../../../shared/interfaces/api.interface";
+import {ListIds} from "../../../../shared/interfaces/api.interface";
 
 @Component({
   selector: 'app-suggest-me',
@@ -20,6 +21,8 @@ export class SuggestMeComponent implements OnInit, OnDestroy {
   media_type: 'movie' | 'tv' = 'movie'
   totalItems: number
 
+  watchedIds: number[] = []
+
   isLoading: boolean = false
 
   constructor(
@@ -32,6 +35,7 @@ export class SuggestMeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.updateData()
+    this.getWatchedIds()
     this.router.events.pipe(takeUntil(this.isDestroyed$)).subscribe((val) => {
       if(val instanceof NavigationEnd){
         this.updateData()
@@ -92,6 +96,17 @@ export class SuggestMeComponent implements OnInit, OnDestroy {
     this.page = event
     this.getSearchResults()
     this.router.navigate(['/content/suggest-me/' + this.searchForm.value.search_query + '/' + this.page])
+  }
+
+  getWatchedIds():void {
+    this.apiCommunicationService.getList(ListIds.watched).pipe(first()).subscribe({
+      next: (data) => {
+        data.items.map((e:{id: number}) => {
+          this.watchedIds.push(e.id)
+        })
+        console.log(this.watchedIds)
+      }
+    })
   }
 
   ngOnDestroy() {

@@ -7,12 +7,14 @@ import { NavbarGuestComponent } from './components/navbar-guest/navbar-guest.com
 import { NavbarAdminComponent } from './components/navbar-admin/navbar-admin.component';
 import {SharedModule} from "./shared/shared.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarGuestComponent,
-    NavbarAdminComponent
+    NavbarAdminComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

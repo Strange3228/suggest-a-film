@@ -1,3 +1,8 @@
+export enum ListIds {
+  watched = 8234322,
+  suggested = 8234297
+}
+
 export interface itemFromDbInterface {
   id: number,
   name?: string,

@@ -1,0 +1,52 @@
+@import '../../../../../variables';
+
+.dashboard{
+  padding: 20px 0;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  h2, h5{
+    color: $grey50;
+    margin-bottom: 40px;
+  }
+  .items{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 24px;
+    margin-bottom: 80px;
+    .item{
+      background: $grey900;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      h3{
+        color: $grey50;
+        margin-bottom: 8px;
+      }
+      p{
+        color: $grey400;
+      }
+    }
+  }
+  .quick_links_wrapper{
+    h5{
+      text-align: center;
+    }
+    .quick_links{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 24px;
+      a{
+        color: $primary400;
+        padding: 40px;
+        text-align: center;
+        background: $black20;
+        border-radius: 12px;
+      }
+    }
+  }
+}
