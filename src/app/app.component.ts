@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IconsRegisterService} from "./services/icons-register.service";
+import {Observable} from "rxjs";
+import {TokenStorageService} from "./shared/services/token-storage.service";
 
 @Component({
   selector: 'app-root',
@@ -8,12 +10,16 @@ import {IconsRegisterService} from "./services/icons-register.service";
 })
 export class AppComponent implements OnInit{
 
+  userIsLogged: boolean
+
   constructor(
-    private iconsRegisterService: IconsRegisterService
+    private iconsRegisterService: IconsRegisterService,
+    private tokenStorageService: TokenStorageService
   ) {
     this.iconsRegisterService.registerIcons()
   }
 
   ngOnInit() {
+    this.userIsLogged = this.tokenStorageService.getLoginInfo() == 'true';
   }
 }

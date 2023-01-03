@@ -8,6 +8,7 @@ import { ContentComponent } from "./content.component";
 import { TvShowsComponent } from './components/tv-shows/tv-shows.component';
 import { DetailsComponent } from './components/details/details.component';
 import { SuggestMeComponent } from './components/suggest-me/suggest-me.component';
+import { ThankYouComponent } from './components/thank-you/thank-you.component';
 
 
 
@@ -17,7 +18,8 @@ import { SuggestMeComponent } from './components/suggest-me/suggest-me.component
     ContentComponent,
     TvShowsComponent,
     DetailsComponent,
-    SuggestMeComponent
+    SuggestMeComponent,
+    ThankYouComponent
   ],
   imports: [
     CommonModule,

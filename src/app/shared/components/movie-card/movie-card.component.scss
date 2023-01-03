@@ -52,6 +52,9 @@
     }
     &.already_suggested{
       color: $success400;
+      &--warning{
+        color: $warning;
+      }
     }
   }
 }

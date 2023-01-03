@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
+import {TokenStorageService} from "./token-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import {environment} from "../../../environments/environment";
 export class ApiCommunicationService {
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private tokenStorageService: TokenStorageService
   ) { }
 
   getPopularMovies(media_type: 'movie' | 'tv', page: number):Observable<any>{
@@ -27,17 +29,22 @@ export class ApiCommunicationService {
       .pipe(catchError(err => {throw err}))
   }
 
-  getWatchlist(media_type: 'movie' | 'tv', page: number, account_id: string | null, session_id: string| null):Observable<any>{
-    return this.httpClient.get(environment.ApiBase + 'account/' + account_id +'/watchlist/movies?api_key=' + environment.ApiKey +'&language=en-US&session_id=' + session_id + '&sort_by=created_at.asc&page=' + page)
-  }
-
   getList(list_id: number):Observable<any>{
     return this.httpClient.get(environment.ApiBase + 'list/' + list_id + '?api_key=' + environment.ApiKey + '&language=en-US')
   }
 
-  addItemToList(list_id: number, session_id: string | null, media_id: number):Observable<any>{
-    return this.httpClient.post(environment.ApiBase + 'list/' + list_id + '/add_item?api_key=' + environment.ApiKey + '&session_id=' + session_id, {
-      "media_id": media_id
+  addItemToList(list_id: number, media_type: string, media_id: number):Observable<any>{
+    return this.httpClient.post(environment.ApiBase4 + 'list/' + list_id + '/items', {
+      "items" : [
+        {
+          "media_type": media_type,
+          "media_id": media_id
+        }
+      ]
+    }, {
+      headers: new HttpHeaders({
+        'authorization': `Bearer ${environment.ApiAccessToken}`
+      })
     })
   }
 }

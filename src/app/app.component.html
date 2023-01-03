@@ -1,3 +1,4 @@
-<app-navbar-guest></app-navbar-guest>
+<app-navbar-guest *ngIf="!userIsLogged"></app-navbar-guest>
+<app-navbar-admin *ngIf="userIsLogged"></app-navbar-admin>
 
 <router-outlet></router-outlet>

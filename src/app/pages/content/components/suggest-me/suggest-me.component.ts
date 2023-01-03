@@ -22,6 +22,9 @@ export class SuggestMeComponent implements OnInit, OnDestroy {
   totalItems: number
 
   watchedIds: number[] = []
+  suggestedIds: number[] = []
+
+  openModal: boolean = false
 
   isLoading: boolean = false
 
@@ -35,7 +38,7 @@ export class SuggestMeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.updateData()
-    this.getWatchedIds()
+    this.getWatchedAndSuggestedIds()
     this.router.events.pipe(takeUntil(this.isDestroyed$)).subscribe((val) => {
       if(val instanceof NavigationEnd){
         this.updateData()
@@ -98,15 +101,27 @@ export class SuggestMeComponent implements OnInit, OnDestroy {
     this.router.navigate(['/content/suggest-me/' + this.searchForm.value.search_query + '/' + this.page])
   }
 
-  getWatchedIds():void {
+  getWatchedAndSuggestedIds():void {
     this.apiCommunicationService.getList(ListIds.watched).pipe(first()).subscribe({
       next: (data) => {
         data.items.map((e:{id: number}) => {
           this.watchedIds.push(e.id)
         })
-        console.log(this.watchedIds)
       }
     })
+    this.apiCommunicationService.getList(ListIds.suggested).pipe(first()).subscribe({
+      next: (data) => {
+        data.items.map((e:{id: number}) => {
+          this.suggestedIds.push(e.id)
+        })
+      }
+    })
+  }
+
+  addToSuggestedIds(event: number): void {
+    this.suggestedIds.push(event)
+    console.log(this.suggestedIds)
+    this.openModal = true
   }
 
   ngOnDestroy() {

@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 
 const SESSION_ID = 'session-id'
 const ACCOUNT_ID = 'account-id'
+const REQUEST_TOKEN = 'request-token'
+const ACCESS_TOKEN = 'access-token'
+const USER_LOGGED = 'user-logged'
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +12,16 @@ const ACCOUNT_ID = 'account-id'
 export class TokenStorageService {
 
   constructor() { }
+
+  saveLoginInfo():void{
+    window.sessionStorage.setItem(USER_LOGGED, 'true')
+  }
+  getLoginInfo():string | null {
+    return sessionStorage.getItem(USER_LOGGED)
+  }
+  logout():void{
+    window.sessionStorage.clear()
+  }
 
   saveSession(sessionId: string){
     window.sessionStorage.setItem(SESSION_ID, sessionId)
@@ -24,6 +37,20 @@ export class TokenStorageService {
 
   getSessionId(): string | null {
     return  sessionStorage.getItem(SESSION_ID)
+  }
+
+  getRequsetToken():string | null {
+    return sessionStorage.getItem(REQUEST_TOKEN)
+  }
+  setRequestToken(token: string):void{
+    window.sessionStorage.setItem(REQUEST_TOKEN, token)
+  }
+
+  getAccessToken():string | null {
+    return sessionStorage.getItem(ACCESS_TOKEN)
+  }
+  setAccessToken(token: string):void{
+    window.sessionStorage.setItem(ACCESS_TOKEN, token)
   }
 
   ifUserIsLogged(): boolean {

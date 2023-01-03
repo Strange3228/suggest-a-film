@@ -27,13 +27,15 @@
         *ngFor="let item of searchResult | paginate : {itemsPerPage: 20, currentPage: page, totalItems: totalItems}"
       >
         <app-movie-card
-
           [title]="item.title ? item.title : item.name"
           [rating]="item.vote_average"
           [coverImageLink]="item.poster_path"
           [allowSuggestions]="true"
           [alreadyWatched]="watchedIds.includes(item.id)"
+          [alreadySuggested]="suggestedIds.includes(item.id)"
           [media_id]="item.id"
+          [media_type]="media_type"
+          (addToSuggested)="addToSuggestedIds($event)"
         >
         </app-movie-card>
       </div>
@@ -58,3 +60,5 @@
 
   </div>
 </div>
+
+<app-thank-you [isActive]="openModal"></app-thank-you>

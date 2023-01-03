@@ -1,0 +1,60 @@
+@import '../../../../../variables';
+
+.overlay{
+  background: rgba(32, 40, 62, 0.4);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  &.active{
+    opacity: 1;
+    pointer-events: all;
+  }
+  .modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 80px;
+    width: 560px;
+    max-width: 95%;
+    background: rgba(18, 24, 41, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid $grey800;
+    border-radius: 24px;
+    position: relative;
+    text-align: center;
+    .close{
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      padding: 8px;
+      border-radius: 8px;
+      right: 24px;
+      top: 24px;
+      cursor: pointer;
+      background: $black30;
+      img{
+        width: 100%;
+      }
+    }
+    & > img{
+      width: 120px;
+    }
+    h4{
+      color: $grey50;
+    }
+    p{
+      color: $grey400;
+    }
+  }
+}

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { catchError, Observable } from "rxjs";
 import { environment } from "../../../../environments/environment";
+import {TokenStorageService} from "../../../shared/services/token-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,29 @@ import { environment } from "../../../../environments/environment";
 export class AuthService {
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private tokenStorageService: TokenStorageService
   ) { }
 
+
   createRequestToken():Observable<any>{
-    return this.httpClient.get(environment.ApiBase + 'authentication/token/new?api_key=' + environment.ApiKey)
-      .pipe(catchError(err => {throw err}))
+    return this.httpClient.post(environment.ApiBase4 + 'auth/request_token', {
+      "redirect_to": `http://localhost:4200/login?approved=true`
+    }, {
+      headers: new HttpHeaders({
+        'authorization': `Bearer ${environment.ApiReadToken}`
+      })
+    }).pipe(catchError(err => {throw err}))
+  }
+
+  createAccessToken():Observable<any>{
+    return this.httpClient.post(environment.ApiBase4 + 'auth/access_token', {
+      "request_token": this.tokenStorageService.getRequsetToken()
+    }, {
+      headers: new HttpHeaders({
+        'authorization': `Bearer ${environment.ApiReadToken}`
+      })
+    }).pipe(catchError(err => {throw err}))
   }
 
   getAccountDetails(session_id: string):Observable<any>{

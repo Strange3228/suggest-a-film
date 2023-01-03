@@ -7,7 +7,7 @@
       <div class="navbar_menu_wrapper">
         <ul>
           <li>
-            <a href="#" class="regular">Dashboard</a>
+            <a routerLink="/account" href="/account" class="regular">Dashboard</a>
           </li>
           <li>
             <a href="#" class="regular">Suggestions</a>
@@ -16,7 +16,7 @@
             <a href="#" class="regular">Add</a>
           </li>
           <li class="big_nav_btn">
-            <a href="#" class="regular"><img src="assets/icons/logout.svg" class="icon-on-left" alt="right arrow">Logout</a>
+            <a (click)="logout($event)" href="#" class="regular"><img src="assets/icons/logout.svg" class="icon-on-left" alt="right arrow">Logout</a>
           </li>
         </ul>
       </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from "../../../../shared/services/token-storage.service";
 import { ApiCommunicationService } from "../../../../shared/services/api-communication.service";
-import { Subject, takeUntil } from "rxjs";
+import {first, Subject, takeUntil} from "rxjs";
+import {ListIds} from "../../../../shared/interfaces/api.interface";
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,10 @@ import { Subject, takeUntil } from "rxjs";
 })
 export class DashboardComponent implements OnInit {
 
-  isDestroyed$: Subject<boolean> = new Subject<boolean>()
+  movieCount: number = 0;
+  tvCount: number = 0
+
+  suggestionsCount: number = 0
 
   constructor(
     private tokenStorageService: TokenStorageService,
@@ -18,21 +22,22 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    /*this.apiCommunicationService.getWatchlist(
-      'movie',
-      1,
-      this.tokenStorageService.getAccountId(),
-      this.tokenStorageService.getSessionId()
-    )
-      .pipe(takeUntil(this.isDestroyed$))
-      .subscribe({
-        next: (data) => {
-          console.log(data)
-        },
-        error: (error) => {
-          console.log(error)
-        }
-      })*/
+    this.apiCommunicationService.getList(ListIds.watched).pipe(first()).subscribe({
+      next: (data) => {
+        data.items.map((item: any) => {
+          if(item.media_type == 'movie'){
+            this.movieCount++
+          } else {
+            this.tvCount++
+          }
+        })
+      }
+    })
+    this.apiCommunicationService.getList(ListIds.suggested).pipe(first()).subscribe({
+      next: (data) => {
+        this.suggestionsCount = data.items.length
+      }
+    })
   }
 
 }
