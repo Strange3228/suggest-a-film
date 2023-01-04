@@ -1,0 +1,41 @@
+<div class="categories_wrapper" *ngIf="watchListFiltered">
+  <div class="categories">
+    <div (click)="changeCategory(MediaTypes.all)" class="categories_item {{selectedMediaType == 'All' ? 'active' : ''}}">
+      <p class="regular">All</p>
+    </div>
+    <div (click)="changeCategory(MediaTypes.movie)" class="categories_item {{selectedMediaType == 'Movie' ? 'active' : ''}}">
+      <p class="regular">Movies</p>
+    </div>
+    <div (click)="changeCategory(MediaTypes.tv)" class="categories_item {{selectedMediaType == 'Tv' ? 'active' : ''}}">
+      <p class="regular">Tv Shows</p>
+    </div>
+  </div>
+</div>
+
+<div class="total_items">
+  <h3>{{selectedMediaType + " "}}</h3>
+  <p class="regular">({{watchListFiltered ? (watchListFiltered.length | number) : '0'}})</p>
+</div>
+<app-results-placeholder *ngIf="isLoading"></app-results-placeholder>
+<div class="list_items_wrapper grid-4-col" *ngIf="!isLoading">
+  <div
+    class="list_item"
+    *ngFor="let item of watchListFiltered | paginate : {itemsPerPage: 20, currentPage: page}"
+  >
+    <app-movie-card
+      [media_id]="item.id"
+      [media_type]="item.media_type"
+      [title]="item.title ? item.title : item.name"
+      [rating]="item.vote_average"
+      [coverImageLink]="item.poster_path"
+    >
+    </app-movie-card>
+  </div>
+</div>
+<pagination-controls
+  (pageChange)="goToPage($event)"
+  [autoHide]="true"
+  [responsive]="true"
+  previousLabel="Prev"
+  nextLabel="Next"
+></pagination-controls>

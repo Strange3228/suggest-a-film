@@ -2,15 +2,15 @@
   <div class="dashboard">
     <h2>Welcome</h2>
     <div class="items">
-      <div class="item">
+      <div class="item cursor-pointer" routerLink="/account/list/movie">
         <h3>{{movieCount}}</h3>
         <p class="regular">Movies</p>
       </div>
-      <div class="item">
+      <div class="item cursor-pointer" routerLink="/account/list/tv">
         <h3>{{tvCount}}</h3>
         <p class="regular">TV Shows</p>
       </div>
-      <div class="item">
+      <div class="item cursor-pointer" routerLink="/account/list/suggestions">
         <h3>{{suggestionsCount}}</h3>
         <p class="regular">Suggestions</p>
       </div>
@@ -22,8 +22,8 @@
     <div class="quick_links_wrapper">
       <h5>Quick Links</h5>
       <div class="quick_links">
-        <a href="#" class="quick_link regular-text">Suggestions</a>
-        <a href="#" class="quick_link regular-text">Add</a>
+        <a routerLink="/account/list/suggestions" href="/account/list/suggestions" class="quick_link regular-text">Suggestions</a>
+        <a routerLink="add" href="/add" class="quick_link regular-text">Add</a>
       </div>
     </div>
   </div>

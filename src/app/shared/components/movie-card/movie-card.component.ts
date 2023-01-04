@@ -3,6 +3,7 @@ import {first} from "rxjs";
 import { environment } from "../../../../environments/environment";
 import {ApiCommunicationService} from "../../services/api-communication.service";
 import {ListIds} from "../../interfaces/api.interface";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-movie-card',
@@ -12,6 +13,8 @@ import {ListIds} from "../../interfaces/api.interface";
 export class MovieCardComponent implements OnInit {
 
   ApiBaseImagePath: string = environment.ApiImage500Base
+  addedToMyList:boolean = false
+
   @Input() media_id: number
   @Input() media_type: string
   @Input() coverImageLink: string | undefined
@@ -22,6 +25,7 @@ export class MovieCardComponent implements OnInit {
   @Input() alreadySuggested: boolean = false
 
   @Input() allowSuggestions: boolean = false
+  @Input() adminView: boolean = false
 
   @Output() addToSuggested = new EventEmitter<number>()
 
@@ -40,6 +44,30 @@ export class MovieCardComponent implements OnInit {
             this.alreadySuggested = true
             this.addToSuggested.emit(this.media_id)
           }
+        }
+      })
+  }
+
+  addToWatchlist(event: Event):void{
+    event.preventDefault()
+    this.apiCommunicationService.addItemToList(ListIds.watched,this.media_type,this.media_id).pipe(first())
+      .subscribe({
+        next: (data) => {
+          if(data.success == true){
+            console.log('removed from suggested')
+          }
+        }
+      })
+    this.apiCommunicationService.removeListItem(ListIds.suggested,this.media_type,this.media_id).pipe(first())
+      .subscribe({
+        next: (data) => {
+          console.log(data)
+          if(data.success == true){
+            this.addedToMyList = true;
+          }
+        },
+        error: error => {
+          console.log(error)
         }
       })
   }

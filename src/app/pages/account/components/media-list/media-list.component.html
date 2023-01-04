@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="suggestions">
+    <h1>{{list_name | titlecase}}</h1>
+    <app-results-placeholder *ngIf="isLoading"></app-results-placeholder>
+    <div class="list_items_wrapper grid-4-col" *ngIf="!isLoading">
+      <div
+        class="list_item"
+        *ngFor="let item of medias | paginate : {itemsPerPage: 20, currentPage: page}"
+      >
+        <app-movie-card
+          [media_id]="item.id"
+          [media_type]="item.media_type"
+          [title]="item.title ? item.title : item.name"
+          [rating]="item.vote_average"
+          [coverImageLink]="item.poster_path"
+          [adminView]="list_name == 'Suggestions'"
+        >
+        </app-movie-card>
+      </div>
+    </div>
+
+    <pagination-controls
+      (pageChange)="goToPage($event)"
+      [autoHide]="true"
+      [responsive]="true"
+      previousLabel="Prev"
+      nextLabel="Next"
+    ></pagination-controls>
+  </div>
+</div>

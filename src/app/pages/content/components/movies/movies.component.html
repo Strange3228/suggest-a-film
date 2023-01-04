@@ -8,7 +8,8 @@
     *ngFor="let movie of movies | paginate : {itemsPerPage: 20, currentPage: page, totalItems: totalMovies}"
   >
     <app-movie-card
-      routerLink="/content/movie/details/{{movie.id}}"
+      [media_id]="movie.id"
+      [media_type]="'movie'"
       [title]="movie.title"
       [rating]="movie.vote_average"
       [coverImageLink]="movie.poster_path"

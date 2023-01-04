@@ -47,4 +47,21 @@ export class ApiCommunicationService {
       })
     })
   }
+
+  removeListItem(list_id: number, media_type: string, media_id: number):Observable<any>{
+    const options = {
+      headers: new HttpHeaders({
+        'authorization': `Bearer ${environment.ApiAccessToken}`
+      }),
+      body: {
+        "items" : [
+          {
+            "media_type": media_type,
+            "media_id": media_id
+          }
+        ]
+      }
+    }
+    return this.httpClient.delete(environment.ApiBase4 + 'list/' + list_id + '/items', options)
+  }
 }

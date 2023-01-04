@@ -8,6 +8,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { InputComponent } from './components/input/input.component';
 import { NgxPaginationModule } from "ngx-pagination";
 import { ResultsPlaceholderComponent } from './components/results-placeholder/results-placeholder.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ResultsPlaceholderComponent } from './components/results-placeholder/re
   imports: [
     CommonModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ]
 })
 export class SharedModule { }

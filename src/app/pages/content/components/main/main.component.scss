@@ -1,0 +1,21 @@
+@import "../../../../../variables";
+
+.categories_wrapper{
+  display: flex;
+}
+.categories{
+  border-radius: 12px;
+  background: $black20;
+  padding: 8px;
+  display: flex;
+  margin-top: 32px;
+  margin-bottom: 24px;
+}
+.total_items{
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  p{
+    line-height: 32px;
+  }
+}

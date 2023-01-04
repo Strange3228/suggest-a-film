@@ -1,6 +1,9 @@
-<div class="card">
+<a
+  [routerLink]="!adminView && !allowSuggestions ? '/content/' + media_type + '/details/' + media_id : null"
+  class="card"
+>
   <div class="poster">
-    <img class="poster_img" *ngIf="coverImageLink; else imagePlaceholder" src="{{ApiBaseImagePath + coverImageLink}}" alt="poster">
+    <img [routerLink]="adminView || allowSuggestions ? '/content/' + media_type + '/details/' + media_id : null" class="poster_img" *ngIf="coverImageLink; else imagePlaceholder" src="{{ApiBaseImagePath + coverImageLink}}" alt="poster">
     <ng-template #imagePlaceholder>
       <div class="poster_img"></div>
     </ng-template>
@@ -10,7 +13,7 @@
     <p>{{rating}}</p>
   </div>
   <div class="description">
-    <a class="regular">{{title}}</a>
+    <a class="regular" [routerLink]="adminView || allowSuggestions ? '/content/' + media_type + '/details/' + media_id : null">{{title}}</a>
     <div *ngIf="allowSuggestions" class="card_suggestion">
       <div class="suggest" *ngIf="!alreadyWatched && !alreadySuggested; else alreadyInList" (click)="suggestFilm()">
         <mat-icon class="svg_primary" svgIcon="custom_like"></mat-icon>
@@ -29,5 +32,13 @@
         </ng-template>
       </ng-template>
     </div>
+    <div class="add_to_list" (click)="addToWatchlist($event)" *ngIf="!addedToMyList && adminView">
+      <mat-icon class="svg_primary" svgIcon="custom_add"></mat-icon>
+      <p class="regular">Add to my list</p>
+    </div>
+    <div class="add_to_list success" *ngIf="addedToMyList && adminView">
+      <mat-icon class="svg_success" svgIcon="custom_video-tick"></mat-icon>
+      <p class="regular">Added to my list</p>
+    </div>
   </div>
-</div>
+</a>

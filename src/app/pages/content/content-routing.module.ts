@@ -5,12 +5,18 @@ import { ContentComponent } from "./content.component";
 import {TvShowsComponent} from "./components/tv-shows/tv-shows.component";
 import {DetailsComponent} from "./components/details/details.component";
 import {SuggestMeComponent} from "./components/suggest-me/suggest-me.component";
+import {MainComponent} from "./components/main/main.component";
 
 const routes: Routes = [
   {
     path: '',
     component: ContentComponent,
     children: [
+      {
+        path: '',
+        title: 'Suggest Me',
+        component: MainComponent
+      },
       {
         path: 'movies/:page',
         title: 'Movies',

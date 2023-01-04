@@ -118,6 +118,9 @@ a.extra-small{
   line-height: 16px;
   //letter-spacing: 2%;
 }
+.cursor-pointer{
+  cursor: pointer;
+}
 
 .grid-4-col{
   display: grid;
@@ -174,6 +177,46 @@ button{
   &:hover{
     background: $primary500;
     border: 2px solid $primary500;
+  }
+}
+
+.total_items{
+  color: $grey400;
+  margin-bottom: 24px;
+}
+.categories_item{
+  padding: 8px 32px;
+  position: relative;
+  cursor: pointer;
+  &::after{
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: $primary400;
+    transition: all 0.3s ease;
+    z-index: 1;
+    border-radius: 8px;
+  }
+  &.active{
+    pointer-events: none;
+    p{
+      color: $primary50;
+    }
+    &::after{
+      height: 100%;
+      width: 100%;
+    }
+  }
+  p.regular{
+    margin: 0 !important;
+    color: $primary50 !important;
+    position: relative;
+    z-index: 2;
+    transition: color 0.2s ease;
   }
 }
 

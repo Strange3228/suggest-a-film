@@ -3,6 +3,12 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Subject, takeUntil} from "rxjs";
 
+enum Titles {
+  movies="Movies",
+  tv="Tv Shows",
+  main="Hello Stranger!"
+}
+
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -12,7 +18,7 @@ export class ContentComponent implements OnInit, OnDestroy{
 
   isDestroyed$: Subject<boolean> = new Subject<boolean>();
 
-  pageTitle: 'Movies' | 'TV Shows' = 'Movies';
+  pageTitle: Titles.movies | Titles.tv | Titles.main = Titles.movies;
   mediaType: 'movie' | 'tv' = 'movie'
   searchForm: FormGroup
 
@@ -38,11 +44,13 @@ export class ContentComponent implements OnInit, OnDestroy{
   setMediaType(){
     let currentUrl = this.router.url
     if(currentUrl.includes('/movies/')) {
-      this.pageTitle = 'Movies'
+      this.pageTitle = Titles.movies
       this.mediaType = 'movie'
     } else if(currentUrl.includes('/tv/')) {
-      this.pageTitle = 'TV Shows'
+      this.pageTitle = Titles.tv
       this.mediaType = 'tv'
+    } else {
+      this.pageTitle = Titles.main
     }
   }
 

@@ -40,7 +40,13 @@
       margin-right: 4px;
     }
   }
-  .card_suggestion div{
+  .add_to_list{
+    color: $primary400;
+    &.success{
+      color: $success400;
+    }
+  }
+  .card_suggestion div, .add_to_list{
     display: flex;
     align-items: center;
     mat-icon{

@@ -61,4 +61,4 @@
   </div>
 </div>
 
-<app-thank-you [isActive]="openModal"></app-thank-you>
+<app-thank-you (close)="closeModal($event)" [isActive]="openModal"></app-thank-you>

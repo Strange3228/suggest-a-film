@@ -1,8 +1,18 @@
+@import "../../../variables";
+
 .content_wrapp{
   padding-top: 64px;
   padding-bottom: 160px;
-  h1{
+  .title_section{
     margin-bottom: 24px;
+    p{
+      margin-top: 16px;
+      color: $grey300;
+      max-width: 590px;
+      a{
+        color: $primary300
+      }
+    }
   }
   form{
     margin-bottom: 48px;

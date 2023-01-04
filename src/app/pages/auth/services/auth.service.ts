@@ -25,6 +25,11 @@ export class AuthService {
     }).pipe(catchError(err => {throw err}))
   }
 
+  createRequestTokenV3():Observable<any>{
+    return this.httpClient
+      .get('https://api.themoviedb.org/3/authentication/token/new?api_key='+environment.ApiKey)
+  }
+
   createAccessToken():Observable<any>{
     return this.httpClient.post(environment.ApiBase4 + 'auth/access_token', {
       "request_token": this.tokenStorageService.getRequsetToken()
@@ -45,5 +50,16 @@ export class AuthService {
         "request_token": requestToken
       })
       .pipe(catchError(err => {throw err}))
+  }
+
+  createSessionWithLoginAndPassword(login: string, password: string, request_token: string):Observable<any>{
+    return this.httpClient
+      .post('https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=' + environment.ApiKey,
+        {
+          "username": login,
+          "password": password,
+          "request_token": request_token
+        }
+    ).pipe(catchError(err => {throw err}))
   }
 }

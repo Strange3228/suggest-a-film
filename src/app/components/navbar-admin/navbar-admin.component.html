@@ -2,7 +2,9 @@
   <div class="container">
     <div class="nav__items">
       <div class="navbar_logo">
-        <img src="assets/icons/logo.png" alt="">
+        <a href="content/" routerLink="/content">
+          <img src="assets/icons/logo.png" alt="">
+        </a>
       </div>
       <div class="navbar_menu_wrapper">
         <ul>
@@ -10,13 +12,13 @@
             <a routerLink="/account" href="/account" class="regular">Dashboard</a>
           </li>
           <li>
-            <a href="#" class="regular">Suggestions</a>
+            <a routerLink="/account/list/suggestions" href="/account/list/suggestions" class="regular">Suggestions</a>
           </li>
           <li>
-            <a href="#" class="regular">Add</a>
+            <a routerLink="/account/add" href="/add" class="regular">Add</a>
           </li>
           <li class="big_nav_btn">
-            <a (click)="logout($event)" href="#" class="regular"><img src="assets/icons/logout.svg" class="icon-on-left" alt="right arrow">Logout</a>
+            <a (click)="logout($event)" href="" class="regular"><img src="assets/icons/logout.svg" class="icon-on-left" alt="right arrow">Logout</a>
           </li>
         </ul>
       </div>

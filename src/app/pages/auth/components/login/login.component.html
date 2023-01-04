@@ -3,17 +3,18 @@
     <div class="left_side">
       <img src="assets/icons/login-man.png" alt="">
     </div>
-    <div class="right_side">
+    <div [formGroup]="loginForm" class="right_side">
       <h1>Login</h1>
-      <form action="">
+      <form>
         <div class="input_groups">
           <div class="input_group">
             <img class="input_prefix" src="assets/icons/sms.svg" alt="sms icon">
-            <input class="caption" type="text" placeholder="Email">
+            <input formControlName="login" class="caption" type="text" name="login" autocomplete="login" placeholder="Email">
           </div>
           <div class="input_group">
             <img class="input_prefix" src="assets/icons/key-square.svg" alt="key icon">
-            <input class="caption" type="text" placeholder="Password">
+            <input formControlName="password" class="caption" type="{{passVisibility ? 'text' : 'password'}}" name="password" autocomplete="password" placeholder="Password">
+            <img (click)="changePassVisibility()" src="assets/icons/{{passVisibility ? 'eye-slash' : 'eye'}}.svg" alt="">
           </div>
         </div>
         <button (click)="login()" class="regular-text">Login</button>

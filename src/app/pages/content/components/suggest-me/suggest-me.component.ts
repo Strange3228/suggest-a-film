@@ -98,7 +98,7 @@ export class SuggestMeComponent implements OnInit, OnDestroy {
   goToPage(event:any){
     this.page = event
     this.getSearchResults()
-    this.router.navigate(['/content/suggest-me/' + this.searchForm.value.search_query + '/' + this.page])
+    //this.router.navigate(['/content/suggest-me/' + this.searchForm.value.search_query + '/' + this.page])
   }
 
   getWatchedAndSuggestedIds():void {
@@ -120,8 +120,11 @@ export class SuggestMeComponent implements OnInit, OnDestroy {
 
   addToSuggestedIds(event: number): void {
     this.suggestedIds.push(event)
-    console.log(this.suggestedIds)
     this.openModal = true
+  }
+
+  closeModal(event: boolean):void {
+    this.openModal = false
   }
 
   ngOnDestroy() {

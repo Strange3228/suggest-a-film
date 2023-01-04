@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {filter, fromEvent, map, Observable, Subject, take} from "rxjs";
 import {IconsRegisterService} from "./services/icons-register.service";
-import {Observable} from "rxjs";
 import {TokenStorageService} from "./shared/services/token-storage.service";
+import {SessionStorageMonitoringService} from "./shared/services/session-storage-monitoring.service";
 
 @Component({
   selector: 'app-root',
@@ -11,15 +12,24 @@ import {TokenStorageService} from "./shared/services/token-storage.service";
 export class AppComponent implements OnInit{
 
   userIsLogged: boolean
+  userIsLoggedString: string
+
+  subscription: any
 
   constructor(
     private iconsRegisterService: IconsRegisterService,
-    private tokenStorageService: TokenStorageService
+    private tokenStorageService: TokenStorageService,
+    private sessionStorageMonitoring: SessionStorageMonitoringService
   ) {
     this.iconsRegisterService.registerIcons()
   }
 
   ngOnInit() {
-    this.userIsLogged = this.tokenStorageService.getLoginInfo() == 'true';
+    this.sessionStorageMonitoring.addUsuario$.subscribe(
+      status => {
+        this.userIsLoggedString = status;
+        this.userIsLogged = status == 'true';
+      }
+    )
   }
 }

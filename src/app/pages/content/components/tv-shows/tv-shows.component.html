@@ -5,7 +5,8 @@
 <div class="list_items_wrapper grid-4-col" *ngIf="!isLoading">
   <div class="list_item" *ngFor="let tvShow of tvShows | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalShows}">
     <app-movie-card
-      routerLink="/content/tv/details/{{tvShow.id}}"
+      [media_id]="tvShow.id"
+      [media_type]="'tv'"
       [title]="tvShow.name"
       [rating]="tvShow.vote_average"
       [coverImageLink]="tvShow.poster_path"

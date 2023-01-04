@@ -31,3 +31,12 @@ export interface dbResponse {
   total_results: number,
   results: itemFromDbInterface[]
 }
+
+export interface ListItem {
+  poster_path: string,
+  id: number,
+  media_type: string,
+  title?: string,
+  name?: string,
+  vote_average: string,
+}

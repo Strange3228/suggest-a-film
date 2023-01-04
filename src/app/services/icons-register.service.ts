@@ -39,5 +39,10 @@ export class IconsRegisterService {
       'custom_key',
       this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/key-square.svg')
     )
+    //Plus icon
+    this.matIconRegistry.addSvgIcon(
+      'custom_add',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/add.svg')
+    )
   }
 }

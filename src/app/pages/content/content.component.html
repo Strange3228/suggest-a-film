@@ -1,6 +1,9 @@
 <div class="content_wrapp">
   <div class="container">
-    <h1>{{pageTitle}}</h1>
+    <div class="title_section">
+      <h1>{{pageTitle}}</h1>
+      <p *ngIf="pageTitle == 'Hello Stranger!'" class="regular">List of movies and TV Shows, I, <a href="" target="_blank">Maksym Kutasievich</a> have watched till date. Explore what I have watched and also feel free to make a suggestion. 😉</p>
+    </div>
     <form [formGroup]="searchForm" (submit)="search()" class="search_form">
       <div class="input_group">
         <img class="input_prefix" src="assets/icons/search.svg" alt="search icon">

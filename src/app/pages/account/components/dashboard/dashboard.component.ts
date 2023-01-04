@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from "../../../../shared/services/token-storage.service";
 import { ApiCommunicationService } from "../../../../shared/services/api-communication.service";
 import {first, Subject, takeUntil} from "rxjs";
-import {ListIds} from "../../../../shared/interfaces/api.interface";
+import {ListIds, ListItem} from "../../../../shared/interfaces/api.interface";
 
 @Component({
   selector: 'app-dashboard',
@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.apiCommunicationService.getList(ListIds.watched).pipe(first()).subscribe({
       next: (data) => {
-        data.items.map((item: any) => {
+        data.items.map((item: ListItem) => {
           if(item.media_type == 'movie'){
             this.movieCount++
           } else {

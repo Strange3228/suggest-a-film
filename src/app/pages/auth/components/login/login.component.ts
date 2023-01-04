@@ -3,6 +3,8 @@ import {AuthService} from "../../services/auth.service";
 import {first} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TokenStorageService} from "../../../../shared/services/token-storage.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {SessionStorageMonitoringService} from "../../../../shared/services/session-storage-monitoring.service";
 
 @Component({
   selector: 'app-login',
@@ -11,45 +13,42 @@ import {TokenStorageService} from "../../../../shared/services/token-storage.ser
 })
 export class LoginComponent implements OnInit {
 
+  loginForm: FormGroup
+  request_token: string
+  subscription: any
+
+  passVisibility: boolean = false
+
   constructor(
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private tokenStorageService: TokenStorageService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private sessionStorageMonitoringService: SessionStorageMonitoringService
   ) { }
 
   ngOnInit(): void {
-    /*if(
-      this.activatedRoute.snapshot.queryParams['approved'] == 'true' &&
-      this.tokenStorageService.getRequsetToken()
-    ){
-      this.authService.createAccessToken().pipe(first())
-        .subscribe({
-          next: (data) => {
-            this.tokenStorageService.setAccessToken(data.access_token)
-            this.router.navigate(['/account'])
-          },
-          error: (error) => {
-            console.log(error)
-          }
-        })
-    }*/
+    this.loginForm = this.formBuilder.group({
+      login: '',
+      password: ''
+    })
+    if(this.tokenStorageService.getLoginInfo() == 'true'){
+
+    }
   }
 
   login():void{
-    this.tokenStorageService.saveLoginInfo()
-    this.router.navigate(['/account'])
+    this.requestLogin()
   }
 
-  /*loginToApplication(session_id: string):void {
-    this.tokenStorageService.saveSession(session_id)
-    this.authService.getAccountDetails(session_id)
+  requestLogin():void{
+    this.authService.createRequestTokenV3()
       .pipe(first())
       .subscribe({
         next: (data) => {
-          console.log(data)
-          this.tokenStorageService.saveAccount(data.id)
-          this.router.navigate(['/account'])
+          this.request_token = data.request_token
+          this.createSession()
         },
         error: (error) => {
           console.log(error)
@@ -57,19 +56,29 @@ export class LoginComponent implements OnInit {
       })
   }
 
-  requestLogin(event: Event):void{
-    event.preventDefault()
-    this.authService.createRequestToken()
-      .pipe(first())
-      .subscribe({
-        next: (data) => {
-          console.log(data)
-          this.tokenStorageService.setRequestToken(data.request_token)
-          window.open('https://www.themoviedb.org/auth/access?request_token=' + data.request_token, '_blank')
-        },
-        error: (error) => {
-          console.log(error)
+  createSession():void{
+    this.authService.createSessionWithLoginAndPassword(
+      this.loginForm.value.login,
+      this.loginForm.value.password,
+      this.request_token
+    ).pipe(first()).subscribe({
+      next: () => {
+        this.tokenStorageService.saveLoginInfo()
+        if(this.subscription) {
+          this.subscription.unsubscribe();
         }
-      })
-  }*/
+        this.subscription = this.sessionStorageMonitoringService.getAddUsuario().subscribe(
+          status => {console.log('new value by login component -> ', status)}
+        )
+        this.router.navigate(['/account'])
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
+  }
+
+  changePassVisibility() {
+    this.passVisibility = !this.passVisibility
+  }
 }
