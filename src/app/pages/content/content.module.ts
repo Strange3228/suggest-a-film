@@ -27,7 +27,6 @@ import { MainComponent } from './components/main/main.component';
     CommonModule,
     ContentRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
   ],
   bootstrap: [ContentComponent]
 })

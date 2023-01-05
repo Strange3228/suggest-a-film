@@ -28,6 +28,7 @@ export class MovieCardComponent implements OnInit {
   @Input() adminView: boolean = false
 
   @Output() addToSuggested = new EventEmitter<number>()
+  @Output() addToWatched = new EventEmitter<number>()
 
   constructor(
     private apiCommunicationService: ApiCommunicationService,
@@ -54,7 +55,7 @@ export class MovieCardComponent implements OnInit {
       .subscribe({
         next: (data) => {
           if(data.success == true){
-            console.log('removed from suggested')
+            this.addToWatched.emit(this.media_id)
           }
         }
       })
@@ -65,9 +66,6 @@ export class MovieCardComponent implements OnInit {
           if(data.success == true){
             this.addedToMyList = true;
           }
-        },
-        error: error => {
-          console.log(error)
         }
       })
   }

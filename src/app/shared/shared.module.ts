@@ -9,12 +9,17 @@ import { InputComponent } from './components/input/input.component';
 import { NgxPaginationModule } from "ngx-pagination";
 import { ResultsPlaceholderComponent } from './components/results-placeholder/results-placeholder.component';
 import {RouterModule} from "@angular/router";
+import {ReactiveFormsModule} from "@angular/forms";
+import {authInterceptorProviders} from "../core/interceptors/SnackbarInerceptor";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     MovieCardComponent,
     InputComponent,
-    ResultsPlaceholderComponent
+    ResultsPlaceholderComponent,
+    SpinnerComponent
   ],
   exports: [
     MovieCardComponent,
@@ -24,12 +29,18 @@ import {RouterModule} from "@angular/router";
     MatIconModule,
     NgxPaginationModule,
     ResultsPlaceholderComponent,
+    ReactiveFormsModule,
+    SpinnerComponent,
   ],
   imports: [
     CommonModule,
     MatIconModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    MatSnackBarModule
+  ],
+  providers: [
+    authInterceptorProviders
   ]
 })
 export class SharedModule { }

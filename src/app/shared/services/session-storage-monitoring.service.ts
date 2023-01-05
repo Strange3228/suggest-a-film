@@ -9,11 +9,11 @@ export class SessionStorageMonitoringService {
   public addUsuario$ = this.addUsuarioSource.asObservable();
 
   constructor() {
-    this.addUsuario$.subscribe(status => window.localStorage.setItem('addUsuario', status));
+    this.addUsuario$.subscribe(status => window.sessionStorage.setItem('addUsuario', status));
   }
 
   getAddUsuario(): Observable<string> {
-    let userStatus = window.localStorage.getItem('addUsuario');
+    let userStatus = window.sessionStorage.getItem('addUsuario');
     userStatus = (userStatus === 'false' || userStatus == null) ? 'true' : 'false';
     this.addUsuarioSource.next(userStatus);
     return this.addUsuario$;

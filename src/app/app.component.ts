@@ -27,6 +27,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.sessionStorageMonitoring.addUsuario$.subscribe(
       status => {
+        console.log(status)
         this.userIsLoggedString = status;
         this.userIsLogged = status == 'true';
       }

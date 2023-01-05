@@ -32,11 +32,11 @@
         </ng-template>
       </ng-template>
     </div>
-    <div class="add_to_list" (click)="addToWatchlist($event)" *ngIf="!addedToMyList && adminView">
+    <div class="add_to_list" (click)="addToWatchlist($event)" *ngIf="!addedToMyList && adminView && !alreadyWatched">
       <mat-icon class="svg_primary" svgIcon="custom_add"></mat-icon>
       <p class="regular">Add to my list</p>
     </div>
-    <div class="add_to_list success" *ngIf="addedToMyList && adminView">
+    <div class="add_to_list success" *ngIf="(addedToMyList && adminView) || (alreadyWatched && adminView)">
       <mat-icon class="svg_success" svgIcon="custom_video-tick"></mat-icon>
       <p class="regular">Added to my list</p>
     </div>

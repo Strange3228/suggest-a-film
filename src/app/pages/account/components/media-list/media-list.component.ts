@@ -22,6 +22,7 @@ export class MediaListComponent implements OnInit {
   list_name_short: string
   list_id: number
 
+  pageFromUrl: string | null = this.activatedRoute.snapshot.paramMap.get('page')
   page:number = 1
   medias: ListItem[]
 
@@ -48,6 +49,9 @@ export class MediaListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(parseInt(<string>this.pageFromUrl) > 0){
+      this.page = parseInt(<string>this.pageFromUrl)
+    }
     this.isLoading = true
     this.apiCommunicationService.getList(this.list_id).pipe(first())
       .subscribe({
@@ -64,7 +68,6 @@ export class MediaListComponent implements OnInit {
               this.medias = data.items.filter((item:ListItem) => item.media_type == 'movie')
               break;
           }
-          console.log(this.medias)
           this.isLoading = false
         },
         error: error => {
@@ -75,6 +78,6 @@ export class MediaListComponent implements OnInit {
 
   goToPage(event:any){
     this.page = event
-    //this.router.navigate(['/content/movies/' + this.page])
+    this.router.navigate(['/account/list/' + this.list_name_short +'/' + this.page])
   }
 }

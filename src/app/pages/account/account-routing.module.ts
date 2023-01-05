@@ -14,9 +14,18 @@ const routes: Routes = [
     component: MediaListComponent
   },
   {
+    path: 'list/:list/:page',
+    component: MediaListComponent
+  },
+  {
     path: 'add',
     component: AddToListComponent
-  }
+  },
+  {
+    path: 'add/:media_type/:search_query/:page',
+    title: 'Add To Watched',
+    component: AddToListComponent
+  },
 ]
 
 @NgModule({

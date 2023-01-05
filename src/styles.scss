@@ -240,3 +240,25 @@ pagination-controls{
     }
   }
 }
+
+.mat-snack-bar-container{
+  &.successSnack{
+    background: $success500;
+    span {
+     color: white;
+    }
+  }
+  &.errorSnack{
+    background: $error500;
+    span {
+      color: $error50;
+    }
+  }
+  button{
+    color: white;
+    &:hover{
+      background: transparent;
+      border: none;
+    }
+  }
+}
