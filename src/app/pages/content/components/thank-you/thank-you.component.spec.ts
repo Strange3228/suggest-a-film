@@ -20,4 +20,10 @@ describe('ThankYouComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should close modal', () => {
+    component.closeModal()
+    expect(component.isActive).toBeFalsy()
+  })
+
 });

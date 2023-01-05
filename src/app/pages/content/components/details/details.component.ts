@@ -36,17 +36,17 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiCommunicationService.getDetails(this.mediaType, this.activatedRoute.snapshot.paramMap.get('id'))
-      .pipe(takeUntil(this.streamIsActive$))
-      .subscribe({
-        next: (data) => {
-          console.log(data)
-          this.details = data
-        },
-        error: (error) => {
-          console.log(error)
-        }
-      })
+   this.apiCommunicationService.getDetails(this.mediaType, this.activatedRoute.snapshot.paramMap.get('id'))
+     .pipe(takeUntil(this.streamIsActive$))
+     .subscribe({
+       next: (data) => {
+         console.log(data)
+         this.details = data
+       },
+       error: (error) => {
+         console.log(error)
+       }
+     })
   }
 
 }

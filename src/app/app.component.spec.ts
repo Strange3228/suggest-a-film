@@ -1,8 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { SessionStorageMonitoringService } from "./shared/services/session-storage-monitoring.service";
 
 describe('AppComponent', () => {
+
+  let sessionStorageMonitoringService: SessionStorageMonitoringService
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -12,6 +16,8 @@ describe('AppComponent', () => {
         AppComponent
       ],
     }).compileComponents();
+
+    sessionStorageMonitoringService = TestBed.inject(SessionStorageMonitoringService)
   });
 
   it('should create the app', () => {
@@ -20,16 +26,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'suggest-a-film'`, () => {
+  it('should update isLoggedStatus', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('suggest-a-film');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('suggest-a-film app is running!');
-  });
+    const component = fixture.componentInstance;
+    component.ngOnInit()
+    expect(component.userIsLogged).toEqual(false)
+    expect(component.userIsLoggedString).toEqual('false')
+  })
 });

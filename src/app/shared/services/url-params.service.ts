@@ -28,6 +28,8 @@ export class UrlParamsService implements OnInit{
   }
 
   urlHasSearchParams(): boolean{
+
+    console.log(this.activatedRoute.snapshot.paramMap.get('search_query'))
     return !!(parseInt(<string>this.activatedRoute.snapshot.paramMap.get('page')) > 0 &&
       this.activatedRoute.snapshot.paramMap.get('search_query') &&
       this.activatedRoute.snapshot.paramMap.get('media_type')

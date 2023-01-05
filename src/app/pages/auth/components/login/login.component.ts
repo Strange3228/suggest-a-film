@@ -33,9 +33,6 @@ export class LoginComponent implements OnInit {
       login: '',
       password: ''
     })
-    if(this.tokenStorageService.getLoginInfo() == 'true'){
-
-    }
   }
 
   login():void{

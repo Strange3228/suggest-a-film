@@ -19,15 +19,14 @@ export class AppComponent implements OnInit{
   constructor(
     private iconsRegisterService: IconsRegisterService,
     private tokenStorageService: TokenStorageService,
-    private sessionStorageMonitoring: SessionStorageMonitoringService
+    private sessionStorageMonitoringService: SessionStorageMonitoringService
   ) {
     this.iconsRegisterService.registerIcons()
   }
 
   ngOnInit() {
-    this.sessionStorageMonitoring.addUsuario$.subscribe(
+    this.sessionStorageMonitoringService.addUsuario$.subscribe(
       status => {
-        console.log(status)
         this.userIsLoggedString = status;
         this.userIsLogged = status == 'true';
       }
