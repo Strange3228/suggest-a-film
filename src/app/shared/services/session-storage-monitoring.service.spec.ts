@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
+import { first } from "rxjs";
 import { SessionStorageMonitoringService } from './session-storage-monitoring.service';
-import {first} from "rxjs";
 
 describe('SessionStorageMonitoringService', () => {
   let service: SessionStorageMonitoringService;

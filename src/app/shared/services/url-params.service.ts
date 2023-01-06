@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {TokenStorageService} from "../../shared/services/token-storage.service";
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {SessionStorageMonitoringService} from "../../shared/services/session-storage-monitoring.service";
+import {TokenStorageService} from "../../shared/services/token-storage.service";
 
 @Component({
   selector: 'app-navbar-admin',

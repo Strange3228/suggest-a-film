@@ -2,22 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from "@angular/common/http";
 import { MatInputModule } from "@angular/material/input";
-import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
-import { InputComponent } from './components/input/input.component';
+import { RouterModule } from "@angular/router";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { NgxPaginationModule } from "ngx-pagination";
 import { ResultsPlaceholderComponent } from './components/results-placeholder/results-placeholder.component';
-import {RouterModule} from "@angular/router";
-import {ReactiveFormsModule} from "@angular/forms";
-import {authInterceptorProviders} from "../core/interceptors/SnackbarInerceptor";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { authInterceptorProviders } from "../core/interceptors/SnackbarInerceptor";
+import { MovieCardComponent } from './components/movie-card/movie-card.component';
 
 @NgModule({
   declarations: [
     MovieCardComponent,
-    InputComponent,
     ResultsPlaceholderComponent,
     SpinnerComponent
   ],

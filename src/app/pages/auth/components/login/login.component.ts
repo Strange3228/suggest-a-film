@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../services/auth.service";
-import {first} from "rxjs";
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {TokenStorageService} from "../../../../shared/services/token-storage.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {first} from "rxjs";
 import {SessionStorageMonitoringService} from "../../../../shared/services/session-storage-monitoring.service";
+import {AuthService} from "../../services/auth.service";
+import {TokenStorageService} from "../../../../shared/services/token-storage.service";
 
 @Component({
   selector: 'app-login',

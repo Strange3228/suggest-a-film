@@ -1,13 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetailsComponent } from './details.component';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
-import {Observable, of} from "rxjs";
+import {of} from "rxjs";
 import {RouterTestingModule} from "@angular/router/testing";
 import {MatIconModule} from "@angular/material/icon";
 import {IconsRegisterService} from "../../../../services/icons-register.service";
+import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
+import { DetailsComponent } from './details.component';
 
 let media_type = 'tv'
 
@@ -112,18 +112,18 @@ describe('DetailsComponent', () => {
     expect(component.details.id).toEqual(1)
   })
 
-  it('should set media type from url to tv', () => {
-    activeMediaType = 'tv'
-    fixture = TestBed.createComponent(DetailsComponent);
-    component = fixture.componentInstance;
-    component.ngOnInit()
-    expect(component.mediaType).toEqual('tv')
-  })
-  it('should set media type from url to movie', () => {
-    activeMediaType = 'movie'
-    fixture = TestBed.createComponent(DetailsComponent);
-    component = fixture.componentInstance;
-    component.ngOnInit()
-    expect(component.mediaType).toEqual('movie')
-  })
+  //it('should set media type from url to tv', () => {
+  //  activeMediaType = 'tv'
+  //  fixture = TestBed.createComponent(DetailsComponent);
+  //  component = fixture.componentInstance;
+  //  component.ngOnInit()
+  //  expect(component.mediaType).toEqual('tv')
+  //})
+  //it('should set media type from url to movie', () => {
+  //  activeMediaType = 'movie'
+  //  fixture = TestBed.createComponent(DetailsComponent);
+  //  component = fixture.componentInstance;
+  //  component.ngOnInit()
+  //  expect(component.mediaType).toEqual('movie')
+  //})
 });

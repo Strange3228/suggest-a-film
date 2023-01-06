@@ -1,11 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
+import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
+import { RouterTestingModule } from "@angular/router/testing";
+import { Router } from "@angular/router";
 import { of } from "rxjs";
 import { ApiDetailsService } from './api-details.service';
 import { ApiCommunicationService } from "./api-communication.service";
-import {RouterTestingModule} from "@angular/router/testing";
-import {Router} from "@angular/router";
-import {environment} from "../../../environments/environment";
 
 describe('ApiDetailsService', () => {
   let service: ApiDetailsService;

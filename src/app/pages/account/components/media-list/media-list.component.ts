@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {first} from "rxjs";
 import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
 import {ListIds, ListItem} from "../../../../shared/interfaces/api.interface";
-import {first} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
 
 enum Lists {
   suggestions='suggestions',

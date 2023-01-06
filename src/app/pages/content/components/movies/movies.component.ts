@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {first, Subject, takeUntil} from "rxjs";
-import { ApiCommunicationService } from "../../../../shared/services/api-communication.service";
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {Subject, takeUntil} from "rxjs";
+import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
 import {itemFromDbInterface} from "../../../../shared/interfaces/api.interface";
 
 @Component({

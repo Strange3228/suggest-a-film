@@ -1,9 +1,8 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {first} from "rxjs";
-import { environment } from "../../../../environments/environment";
+import {environment} from "../../../../environments/environment";
 import {ApiCommunicationService} from "../../services/api-communication.service";
 import {ListIds} from "../../interfaces/api.interface";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-movie-card',
@@ -62,7 +61,6 @@ export class MovieCardComponent implements OnInit {
     this.apiCommunicationService.removeListItem(ListIds.suggested,this.media_type,this.media_id).pipe(first())
       .subscribe({
         next: (data) => {
-          console.log(data)
           if(data.success == true){
             this.addedToMyList = true;
           }

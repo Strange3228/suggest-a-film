@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {Router} from "@angular/router";
+import {first, Subject} from "rxjs";
 import {ApiCommunicationService} from "./api-communication.service";
 import {itemFromDbInterface, ListIds} from "../interfaces/api.interface";
-import {BehaviorSubject, first, Subject} from "rxjs";
-import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'

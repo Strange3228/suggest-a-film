@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {Subject, takeUntil} from "rxjs";
-import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {Subject, takeUntil} from "rxjs";
 import {itemFromDbInterface} from "../../../../shared/interfaces/api.interface";
+import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
 
 @Component({
   selector: 'app-tv-shows',

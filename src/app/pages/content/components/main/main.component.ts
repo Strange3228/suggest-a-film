@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Subject, takeUntil} from "rxjs";
 import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
 import {ListIds, ListItem} from "../../../../shared/interfaces/api.interface";
-import {Subject, takeUntil} from "rxjs";
 
-enum MediaTypes {
+export enum MediaTypes {
   all = "All",
   tv = "Tv",
   movie = "Movie"
@@ -41,7 +41,6 @@ export class MainComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.streamIsActive$))
       .subscribe({
         next: data => {
-          console.log(data)
           this.watchList = data.items
           this.watchListFiltered = data.items
           this.isLoading = false

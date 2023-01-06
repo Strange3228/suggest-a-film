@@ -9,7 +9,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, } from 'rxjs/operators';
-import {SnackbarService} from "../../shared/services/snackbar.service";
+import { SnackbarService } from "../../shared/services/snackbar.service";
 
 @Injectable()
 export class SnackbarInterceptor implements HttpInterceptor {

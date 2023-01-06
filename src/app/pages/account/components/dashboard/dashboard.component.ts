@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from "../../../../shared/services/token-storage.service";
-import { ApiCommunicationService } from "../../../../shared/services/api-communication.service";
-import {first, Subject, takeUntil} from "rxjs";
+import {Component, OnInit} from '@angular/core';
+import {first} from "rxjs";
 import {ListIds, ListItem} from "../../../../shared/interfaces/api.interface";
+import {TokenStorageService} from "../../../../shared/services/token-storage.service";
+import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
 
 @Component({
   selector: 'app-dashboard',

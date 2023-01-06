@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {first, Subject, takeUntil} from "rxjs";
-import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
-import {itemFromDbInterface, ListIds} from "../../../../shared/interfaces/api.interface";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {Subject, takeUntil} from "rxjs";
+import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
+import {itemFromDbInterface} from "../../../../shared/interfaces/api.interface";
 import {ApiDetailsService} from "../../../../shared/services/api-details.service";
 import {UrlParamsService} from "../../../../shared/services/url-params.service";
 

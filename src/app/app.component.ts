@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {filter, fromEvent, map, Observable, Subject, take} from "rxjs";
+import {Component, OnInit} from '@angular/core';
 import {IconsRegisterService} from "./services/icons-register.service";
 import {TokenStorageService} from "./shared/services/token-storage.service";
 import {SessionStorageMonitoringService} from "./shared/services/session-storage-monitoring.service";

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {NavigationEnd, Router} from "@angular/router";
 import {Subject, takeUntil} from "rxjs";

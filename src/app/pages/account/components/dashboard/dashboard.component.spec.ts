@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DashboardComponent } from './dashboard.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
 import {of} from "rxjs";
+import {DashboardComponent} from './dashboard.component';
+import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;

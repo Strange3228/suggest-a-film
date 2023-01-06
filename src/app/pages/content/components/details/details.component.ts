@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Subject, takeUntil} from "rxjs";
 import {ApiCommunicationService} from "../../../../shared/services/api-communication.service";

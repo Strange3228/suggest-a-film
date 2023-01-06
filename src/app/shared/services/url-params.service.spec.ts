@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
+import { RouterTestingModule } from "@angular/router/testing";
+import { ActivatedRoute, Router } from "@angular/router";
 import { UrlParamsService } from './url-params.service';
-import {RouterTestingModule} from "@angular/router/testing";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ContentRoutingModule} from "../../pages/content/content-routing.module";
+import { ContentRoutingModule } from "../../pages/content/content-routing.module";
 
 describe('UrlParamsService', () => {
   let service: UrlParamsService;
