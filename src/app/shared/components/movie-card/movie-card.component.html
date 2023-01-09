@@ -1,4 +1,5 @@
-<div
+<a
+  [routerLink]="!adminView && !allowSuggestions ? '/content/' + media_type + '/details/' + media_id : null"
   class="card"
 >
   <div class="poster">
@@ -40,4 +41,4 @@
       <p class="regular">Added to my list</p>
     </div>
   </div>
-</div>
+</a>
