@@ -2,7 +2,6 @@
   class="card"
 >
   <div class="poster">
-    <img class="poster_img" *ngIf="coverImageLink; else imagePlaceholder" src="{{ApiBaseImagePath + coverImageLink}}" alt="poster">
     <ng-template #imagePlaceholder>
       <div class="poster_img"></div>
     </ng-template>
