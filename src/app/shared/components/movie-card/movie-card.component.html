@@ -1,9 +1,8 @@
 <a
-  [routerLink]="!adminView && !allowSuggestions ? '/content/' + media_type + '/details/' + media_id : null"
   class="card"
 >
   <div class="poster">
-    <img [routerLink]="adminView || allowSuggestions ? '/content/' + media_type + '/details/' + media_id : null" class="poster_img" *ngIf="coverImageLink; else imagePlaceholder" src="{{ApiBaseImagePath + coverImageLink}}" alt="poster">
+    <img class="poster_img" *ngIf="coverImageLink; else imagePlaceholder" src="{{ApiBaseImagePath + coverImageLink}}" alt="poster">
     <ng-template #imagePlaceholder>
       <div class="poster_img"></div>
     </ng-template>
@@ -13,7 +12,7 @@
     <p>{{rating}}</p>
   </div>
   <div class="description">
-    <a class="regular" [routerLink]="adminView || allowSuggestions ? '/content/' + media_type + '/details/' + media_id : null">{{title}}</a>
+    <a class="regular">{{title}}</a>
     <div *ngIf="allowSuggestions" class="card_suggestion">
       <div class="suggest" *ngIf="!alreadyWatched && !alreadySuggested; else alreadyInList" (click)="suggestFilm()">
         <mat-icon class="svg_primary" svgIcon="custom_like"></mat-icon>
