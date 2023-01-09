@@ -9,6 +9,7 @@ const AccountId = '63ac74f37ef3811f58c948f6'
 const ApiBase = 'https://api.themoviedb.org/3/'
 const ApiBase4 = 'https://api.themoviedb.org/4/'
 const ApiImage500Base = 'https://image.tmdb.org/t/p/w500/'
+const ApiImage300Base = 'https://image.tmdb.org/t/p/w300/'
 const ApiImageOriginalBase = 'https://image.tmdb.org/t/p/original//'
 export const environment = {
   production: false,
@@ -19,6 +20,7 @@ export const environment = {
   ApiImageOriginalBase: ApiImageOriginalBase,
   AccountId: AccountId,
   ApiBase4: ApiBase4,
+  ApiImage300Base: ApiImage300Base,
   ApiAccessToken: ApiAccessToken
 };
 
