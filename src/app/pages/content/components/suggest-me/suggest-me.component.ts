@@ -44,6 +44,7 @@ export class SuggestMeComponent implements OnInit, OnDestroy {
     this.watchedIds = this.apiDetailsService.getWatchedItemsIds()
     this.apiDetailsService.search_results.pipe(takeUntil(this.isDestroyed$)).subscribe({
       next: data => {
+        console.log('next data in searchResult Subject: ', data)
         this.searchResult = data.results
         this.totalItems = data.total_results
         this.isLoading = false

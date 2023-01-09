@@ -9,7 +9,7 @@ import {itemFromDbInterface, ListIds} from "../interfaces/api.interface";
 })
 export class ApiDetailsService {
 
-  search_results: Subject<{results: itemFromDbInterface[],total_results: number}> = new Subject<{results: itemFromDbInterface[],total_results: number}>()
+  search_results: Subject<any> = new Subject<any>()
 
   constructor(
     private apiCommunicationService: ApiCommunicationService,
@@ -52,12 +52,14 @@ export class ApiDetailsService {
       .pipe(first())
       .subscribe({
         next: (data) => {
+          console.log('Details -> search results:', data)
           results = data.results
           total_results = data.total_results
           this.router.navigate([linkBase + media_type + '/' + search_query + '/' + page])
           this.search_results.next({results: results,total_results: total_results})
         },
         error: (error) => {
+          console.log('error from api details service')
           console.log(error)
         }
       })

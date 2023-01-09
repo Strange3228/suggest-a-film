@@ -3,21 +3,18 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-navbar-guest',
   templateUrl: './navbar-guest.component.html',
-  styleUrls: ['./navbar-guest.component.scss']
+  styleUrls: ['./navbar-guest.component.scss'],
 })
 export class NavbarGuestComponent implements OnInit {
+  openOnMobile: boolean = false;
 
-  openOnMobile: boolean = false
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  openSideBar(): void{
-    console.log('call')
-    this.openOnMobile = !this.openOnMobile
+  openSideBar(): void {
+    this.openOnMobile = !this.openOnMobile;
     // @ts-ignore
-    document.querySelector('body').classList.toggle('block_scroll')
+    document.querySelector('body').classList.toggle('block_scroll');
   }
 }
