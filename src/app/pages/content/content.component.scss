@@ -17,6 +17,13 @@
   form{
     margin-bottom: 48px;
   }
+  @media (max-width: 610px) {
+    padding-top: 24px;
+    padding-bottom: 100px;
+    form{
+      margin-bottom: 24px;
+    }
+  }
 }
 .search_form{
   display: flex;

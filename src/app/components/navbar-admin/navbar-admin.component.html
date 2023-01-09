@@ -7,7 +7,7 @@
         </a>
       </div>
       <div class="navbar_menu_wrapper">
-        <ul>
+        <ul class="{{openOnMobile ? 'active' : ''}}">
           <li>
             <a routerLink="/account" href="/account" class="regular">Dashboard</a>
           </li>
@@ -21,6 +21,14 @@
             <a (click)="logout($event)" href="" class="regular"><img src="assets/icons/logout.svg" class="icon-on-left" alt="right arrow">Logout</a>
           </li>
         </ul>
+        <div class="burger_container">
+          <label for="check" class="burger">
+            <input type="checkbox"  (click)="openSideBar()" id="check"/>
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
       </div>
     </div>
   </div>

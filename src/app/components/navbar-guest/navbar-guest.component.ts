@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarGuestComponent implements OnInit {
 
+  openOnMobile: boolean = false
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  openSideBar(): void{
+    console.log('call')
+    this.openOnMobile = !this.openOnMobile
+    // @ts-ignore
+    document.querySelector('body').classList.toggle('block_scroll')
+  }
 }

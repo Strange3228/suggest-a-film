@@ -18,12 +18,22 @@
     object-position: center;
     height: 400px;
     background: $grey800;
+    @media (max-width: 1250px) {
+      height: 300px;
+    }
+    @media (max-width: 610px) {
+      height: 250px;
+    }
   }
   .description{
     padding: 8px;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    @media (max-width: 610px) {
+      padding: 0px;
+      gap: 10px;
+    }
   }
   .rating{
     position: absolute;

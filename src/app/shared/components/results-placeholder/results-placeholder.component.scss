@@ -16,6 +16,12 @@
     object-position: center;
     background: $grey800;
     height: 400px;
+    @media (max-width: 1250px) {
+      height: 300px;
+    }
+    @media (max-width: 610px) {
+      height: 250px;
+    }
   }
   .description{
     padding: 8px;
@@ -28,6 +34,13 @@
       max-width: 100%;
       border-radius: 8px;
       height: 16px;
+    }
+    @media (max-width: 610px) {
+      padding: 0px;
+      gap: 10px;
+      .title{
+        width: 100px;
+      }
     }
   }
   .rating{
@@ -61,6 +74,9 @@
       max-width: 100%;
       border-radius: 8px;
       height: 16px;
+      @media (max-width: 610px) {
+        width: 100px;
+      }
     }
   }
 }

@@ -11,6 +11,7 @@ import {TokenStorageService} from "../../shared/services/token-storage.service";
 export class NavbarAdminComponent implements OnInit {
 
   subscription: any
+  openOnMobile: boolean = false
 
   constructor(
     private tokenStorageService: TokenStorageService,
@@ -31,5 +32,12 @@ export class NavbarAdminComponent implements OnInit {
       status => {console.log('new value by login component -> ', status)}
     )
     this.router.navigate(['/content/movies/1'])
+  }
+
+  openSideBar(): void{
+    console.log('call')
+    this.openOnMobile = !this.openOnMobile
+    // @ts-ignore
+    document.querySelector('body').classList.toggle('block_scroll')
   }
 }

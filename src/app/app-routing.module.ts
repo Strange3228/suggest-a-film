@@ -5,6 +5,11 @@ import {IsAuthenticatedService, IsNotAuthenticatedService} from "./services/is-a
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/content',
+    pathMatch: 'full'
+  },
+  {
     path: 'content',
     loadChildren: () => import('./pages/content/content.module')
       .then(m => m.ContentModule)

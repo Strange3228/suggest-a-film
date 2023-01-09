@@ -33,6 +33,11 @@
     border-radius: 24px;
     position: relative;
     text-align: center;
+    @media (max-width: 610px) {
+      padding-left: 24px;
+      padding-right: 24px;
+      gap: 12px;
+    }
     .close{
       width: 40px;
       height: 40px;

@@ -7,6 +7,30 @@
   gap: 126px;
   padding-right: 104px;
   height: calc(100vh - 80px);
+  @media (max-width: 1010px) {
+    gap: 40px;
+    padding-right: 0;
+    .left_side{
+      flex: 1;
+      img{
+        width: 100%;
+      }
+    }
+  }
+  @media (max-width: 610px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .left_side{
+      display: none;
+      img{
+        width: 150px;
+      }
+    }
+    .right_side{
+      flex: unset !important;
+    }
+  }
   .right_side{
     flex: 1;
     h1{

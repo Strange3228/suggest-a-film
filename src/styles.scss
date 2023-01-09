@@ -16,29 +16,47 @@ body{
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
+  &.block_scroll{
+    overflow: hidden;
+  }
 }
 .container{
   max-width: 1440px;
   padding: 0 120px;
   margin: auto;
+  @media (max-width: 1100px) {
+    padding: 0 20px;
+  }
 }
 h1{
   font-size: 64px;
   font-weight: 600;
   line-height: 80px;
   letter-spacing: -2%;
+  @media(max-width: 610px){
+    font-size: 48px;
+    line-height: 56px;
+  }
 }
 h2{
   font-size: 48px;
   font-weight: 600;
   line-height: 56px;
   letter-spacing: -2%;
+  @media (max-width: 610px) {
+    font-size: 32px;
+    line-height: 40px;
+  }
 }
 h3{
   font-size: 32px;
   font-weight: 600;
   line-height: 40px;
   letter-spacing: -2%;
+  @media (max-width: 610px) {
+    font-size: 24px;
+    line-height: 32px;
+  }
 }
 h4{
   font-size: 24px;
@@ -62,11 +80,18 @@ p.large{
   font-size: 20px;
   font-weight: 400;
   line-height: 32px;
+  @media (max-width: 610px) {
+    font-size: 16px;
+    line-height: 32px;
+  }
 }
 p.regular, .regular-text{
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
+  @media(max-width: 610px){
+    font-size: 14px;
+  }
 }
 p.small, .small-text{
   font-size: 14px;
@@ -122,11 +147,32 @@ a.extra-small{
   cursor: pointer;
 }
 
+.categories{
+  border-radius: 12px;
+  background: $black20;
+  padding: 8px;
+  display: flex;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  @media (max-width: 610px) {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    width: 100%;
+  }
+}
 .grid-4-col{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 24px;
   grid-row-gap: 20px;
+  @media (max-width: 850px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 610px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+  }
 }
 
 .input_group{
@@ -149,6 +195,11 @@ a.extra-small{
     &::placeholder{
       color: $grey600
     }
+  }
+  @media (max-width: 610px) {
+    padding: 12px 16px;
+    width: 100%;
+    min-width: unset;
   }
 }
 
@@ -218,6 +269,11 @@ button{
     z-index: 2;
     transition: color 0.2s ease;
   }
+  @media (max-width: 610px) {
+    padding: 8px;
+    flex: 1;
+    text-align: center;
+  }
 }
 
 pagination-controls{
@@ -260,5 +316,82 @@ pagination-controls{
       background: transparent;
       border: none;
     }
+  }
+}
+
+.search_result_is_empty{
+  max-width: 640px;
+  text-align: center;
+  margin: auto;
+  padding-top: 48px;
+  h2{
+    color: $grey50;
+    margin-bottom: 16px;
+  }
+  p{
+    color: $grey400;
+    margin-bottom: 40px;
+  }
+  button{
+    padding: 16px 32px;
+    border-radius: 12px;
+  }
+  @media (max-width: 610px) {
+    max-width: 100%;
+    padding-top: 24px;
+    p{
+      margin-bottom: 24px;
+    }
+    button{
+      padding: 8px 16px;
+      border-radius: 12px;
+    }
+  }
+}
+
+.burger_container{
+  position: relative;
+  z-index: 11;
+  display: none;
+  @media(max-width: 767px){
+    display: block;
+  }
+  label{
+    display:flex;
+    flex-direction:column;
+    width:30px;
+    cursor:pointer;
+  }
+  label span{
+    background: #fff;
+    border-radius:10px;
+    height:3px;
+    margin: 3px 0;
+    transition: .4s  cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+  span:nth-of-type(1){
+    width:50%;
+  }
+  span:nth-of-type(2){
+    width:100%;
+  }
+  span:nth-of-type(3){
+    width:75%;
+  }
+  input[type="checkbox"]{
+    display:none;
+  }
+  input[type="checkbox"]:checked ~ span:nth-of-type(1){
+    transform-origin:bottom;
+    transform:rotatez(45deg) translate(4px,0px)
+  }
+  input[type="checkbox"]:checked ~ span:nth-of-type(2){
+    transform-origin:top;
+    transform:rotatez(-45deg)
+  }
+  input[type="checkbox"]:checked ~ span:nth-of-type(3){
+    transform-origin:bottom;
+    width:50%;
+    transform: translate(13px,-5px) rotatez(45deg);
   }
 }
