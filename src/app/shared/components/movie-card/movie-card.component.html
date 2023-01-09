@@ -1,5 +1,4 @@
 <a
-  [routerLink]="!adminView && !allowSuggestions ? '/content/' + media_type + '/details/' + media_id : null"
   class="card"
 >
   <div class="poster">
@@ -10,32 +9,6 @@
     <p>{{rating}}</p>
   </div>
   <div class="description">
-    <a class="regular" [routerLink]="adminView || allowSuggestions ? '/content/' + media_type + '/details/' + media_id : null">{{title}}</a>
-    <div *ngIf="allowSuggestions" class="card_suggestion">
-      <div class="suggest" *ngIf="!alreadyWatched && !alreadySuggested; else alreadyInList" (click)="suggestFilm()">
-        <mat-icon class="svg_primary" svgIcon="custom_like"></mat-icon>
-        <p class="regular">Suggest this</p>
-      </div>
-      <ng-template #alreadyInList>
-        <div class="already_suggested" *ngIf="alreadyWatched; else alreadySuggestedTemplate">
-          <mat-icon class="svg_success" svgIcon="custom_video-tick"></mat-icon>
-          <p class="regular">Already watched</p>
-        </div>
-        <ng-template #alreadySuggestedTemplate>
-          <div class="already_suggested already_suggested--warning" *ngIf="alreadySuggested">
-            <mat-icon class="svg_warning" svgIcon="custom_video-tick"></mat-icon>
-            <p class="regular">Already suggested</p>
-          </div>
-        </ng-template>
-      </ng-template>
-    </div>
-    <div class="add_to_list" (click)="addToWatchlist($event)" *ngIf="!addedToMyList && adminView && !alreadyWatched">
-      <mat-icon class="svg_primary" svgIcon="custom_add"></mat-icon>
-      <p class="regular">Add to my list</p>
-    </div>
-    <div class="add_to_list success" *ngIf="(addedToMyList && adminView) || (alreadyWatched && adminView)">
-      <mat-icon class="svg_success" svgIcon="custom_video-tick"></mat-icon>
-      <p class="regular">Added to my list</p>
-    </div>
+    <a class="regular">{{title}}</a>
   </div>
 </a>
