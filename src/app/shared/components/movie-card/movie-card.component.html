@@ -1,9 +1,11 @@
-<a
-  [routerLink]="!adminView && !allowSuggestions ? '/content/' + media_type + '/details/' + media_id : null"
+<div
   class="card"
 >
   <div class="poster">
-    <div style="background: #000; height: 300px"></div>
+    <img [routerLink]="adminView || allowSuggestions ? '/content/' + media_type + '/details/' + media_id : null" class="poster_img" *ngIf="coverImageLink; else imagePlaceholder" src="{{ApiBaseImagePath + coverImageLink}}" alt="poster">
+    <ng-template #imagePlaceholder>
+      <div class="poster_img"></div>
+    </ng-template>
   </div>
   <div class="rating">
     <mat-icon class="svg_warning" svgIcon="custom_star"></mat-icon>
@@ -38,4 +40,4 @@
       <p class="regular">Added to my list</p>
     </div>
   </div>
-</a>
+</div>
