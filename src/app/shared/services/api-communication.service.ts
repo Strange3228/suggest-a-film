@@ -25,7 +25,7 @@ export class ApiCommunicationService {
   }
 
   getSearchResult(media_type: 'movie' | 'tv', page: number, query: string):Observable<any>{
-    return this.httpClient.get(environment.ApiBase + 'search/' + media_type + '/' + '?api_key=' + environment.ApiKey + '&language=en-US&query=' + query + '&page=' + page + '&include_adult=false', {
+    return this.httpClient.get(environment.ApiBase4 + 'search/' + media_type + '/' + '?api_key=' + environment.ApiKey + '&language=en-US&query=' + query + '&page=' + page + '&include_adult=false', {
       headers: new HttpHeaders({
         'Content-type': 'application/json'
       })
