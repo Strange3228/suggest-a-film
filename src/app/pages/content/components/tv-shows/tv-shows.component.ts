@@ -54,4 +54,8 @@ export class TvShowsComponent implements OnInit {
     this.updateTvShows();
     this.router.navigate(['/content/tv/' + this.page]);
   }
+
+  identify(index: number, item:itemFromDbInterface){
+    return item.id;
+  }
 }

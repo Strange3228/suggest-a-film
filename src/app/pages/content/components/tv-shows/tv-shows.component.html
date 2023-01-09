@@ -3,7 +3,7 @@
 </div>
 <app-results-placeholder *ngIf="isLoading"></app-results-placeholder>
 <div class="list_items_wrapper grid-4-col" *ngIf="!isLoading">
-  <div class="list_item" *ngFor="let tvShow of tvShows | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalShows}">
+  <div class="list_item" *ngFor="let tvShow of tvShows | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalShows}; trackBy: identify">
     <app-movie-card
       [media_id]="tvShow.id"
       [media_type]="'tv'"
