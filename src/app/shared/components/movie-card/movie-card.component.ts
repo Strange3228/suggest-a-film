@@ -11,7 +11,7 @@ import {ListIds} from "../../interfaces/api.interface";
 })
 export class MovieCardComponent implements OnInit {
 
-  ApiBaseImagePath: string = environment.ApiImage300Base
+  ApiBaseImagePath: string = environment.ApiImage500Base
   addedToMyList:boolean = false
 
   @Input() media_id: number

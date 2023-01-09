@@ -7,7 +7,7 @@
         <img class="input_prefix" src="assets/icons/search.svg" alt="search icon">
         <input #searchInput formControlName="search_query" class="caption" type="text" placeholder="Search Movies or TV Shows">
       </div>
-      <button (click)="submitSearchForm()" class="regular-text">
+      <button [disabled]="!(searchInput.value.length > 0)" (click)="submitSearchForm()" class="regular-text">
         <span *ngIf="!isLoading">Search</span>
         <app-spinner *ngIf="isLoading"></app-spinner>
       </button>

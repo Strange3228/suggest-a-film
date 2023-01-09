@@ -12,7 +12,7 @@ html{
 body{
   font-family: $font_poppins;
   min-height: 100vh;
-  //background-image: url("assets/icons/background.png");
+  //background-image: url("/assets/icons/background.png");
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -228,6 +228,11 @@ button{
   &:hover{
     background: $primary500;
     border: 2px solid $primary500;
+  }
+  &:disabled,
+  &[disabled]{
+    background-color: $black20;
+    cursor: not-allowed;
   }
 }
 

@@ -22,6 +22,7 @@ export class DetailsComponent implements OnInit {
     private router: Router,
     private apiCommunicationService: ApiCommunicationService
   ) {
+    window.scrollTo(0, 0)
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         if (this.activatedRoute.snapshot.url[0].path == 'movie') {
