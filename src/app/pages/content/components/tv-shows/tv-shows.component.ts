@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import {first, Subject, takeUntil} from 'rxjs';
 import { itemFromDbInterface } from '../../../../shared/interfaces/api.interface';
 import { ApiCommunicationService } from '../../../../shared/services/api-communication.service';
 
@@ -11,6 +11,9 @@ import { ApiCommunicationService } from '../../../../shared/services/api-communi
 })
 export class TvShowsComponent implements OnInit {
   streamIsActive$: Subject<boolean> = new Subject<boolean>();
+
+  apiResults: Subject<any> = new Subject<any>()
+
   tvShows: itemFromDbInterface[];
   totalShows: number = 0;
   pageFromUrl: string | null =
@@ -36,7 +39,7 @@ export class TvShowsComponent implements OnInit {
     this.isLoading = true;
     this.apiCommunicationService
       .getPopularMovies('tv', this.page)
-      .pipe(takeUntil(this.streamIsActive$))
+      .pipe(first())
       .subscribe({
         next: (data) => {
           this.tvShows = data.results;
