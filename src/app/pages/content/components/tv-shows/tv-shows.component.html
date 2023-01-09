@@ -4,16 +4,14 @@
 <app-results-placeholder *ngIf="isLoading"></app-results-placeholder>
 <div class="list_items_wrapper grid-4-col" *ngIf="!isLoading">
   <div class="list_item" *ngFor="let tvShow of tvShows | paginate: {itemsPerPage: 20, currentPage: page, totalItems: totalShows}">
-    <div class="">
-      <app-movie-card
-        [media_id]="tvShow.id"
-        [media_type]="'tv'"
-        [title]="tvShow.name"
-        [rating]="tvShow.vote_average"
-        [coverImageLink]="tvShow.poster_path"
-      >
-      </app-movie-card>
-    </div>
+    <app-movie-card
+      [media_id]="tvShow.id"
+      [media_type]="'tv'"
+      [title]="tvShow.name"
+      [rating]="tvShow.vote_average"
+      [coverImageLink]="tvShow.poster_path"
+    >
+    </app-movie-card>
   </div>
 </div>
 <pagination-controls
