@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Trending</h1>
+  <div class="chart_wrapp">
+    <div class="chart-container">
+      <canvas  id="MyChart" >{{ chart }}</canvas>
+    </div>
+  </div>
+
+  <div class="details" *ngIf="openMedias" @scrollUp @scrollDown>
+    <h2>Trending {{activeMediaType == 'movie' ? 'movies' : 'Tv Shows'}}</h2>
+    <div class="details__item" *ngFor="let item of activeMediasArray">
+      <img src="{{ApiBaseImagePath + item.poster_path}}" alt="" style="height: 150px; width: 100px;">
+      <div class="details_desc">
+        <p class="large">{{item.name ? item.name : item.title}}</p>
+        <a routerLink="{{'/content/' + item.media_type + '/details/' + item.id}}" class="regular-text" href="{{'/content/' + item.media_type + '/details/' + item.id}}">Details</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { AccountRoutingModule } from "./account-routing.module";
 import { AddToListComponent } from './components/add-to-list/add-to-list.component';
 import { SharedModule } from "../../shared/shared.module";
 import { MediaListComponent } from './components/media-list/media-list.component';
+import { ChartsComponent } from './components/charts/charts.component';
 
 
 
@@ -12,7 +13,8 @@ import { MediaListComponent } from './components/media-list/media-list.component
   declarations: [
     DashboardComponent,
     AddToListComponent,
-    MediaListComponent
+    MediaListComponent,
+    ChartsComponent
   ],
   imports: [
     AccountRoutingModule,

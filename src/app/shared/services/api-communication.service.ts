@@ -38,6 +38,10 @@ export class ApiCommunicationService {
     return this.httpClient.get(environment.ApiBase + 'list/' + list_id + '?api_key=' + environment.ApiKey + '&language=en-US')
   }
 
+  getPopular(time_window: 'week' | 'day'):Observable<any>{
+    return this.httpClient.get(environment.ApiBase + 'trending/all/' + time_window + '?api_key=' + environment.ApiKey)
+  }
+
   addItemToList(list_id: number, media_type: string, media_id: number):Observable<any>{
     return this.httpClient.post(environment.ApiBase4 + 'list/' + list_id + '/items', {
       "items" : [

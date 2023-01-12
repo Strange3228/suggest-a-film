@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { AddToListComponent } from "./components/add-to-list/add-to-list.component";
 import { MediaListComponent } from "./components/media-list/media-list.component";
+import { ChartsComponent } from "./components/charts/charts.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
     title: 'Add To Watched',
     component: AddToListComponent
   },
+  {
+    path: 'charts',
+    title: 'Check stats',
+    component: ChartsComponent
+  }
 ]
 
 @NgModule({
